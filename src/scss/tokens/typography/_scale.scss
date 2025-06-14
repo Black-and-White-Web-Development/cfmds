@@ -1,0 +1,13 @@
+@use "@/scss/config" as c;
+
+$typographic-scale: (
+	1: ( size: 12 * c.$scaling, leading: 16 * c.$scaling, tracking: 0.0025 * c.$scaling ),
+	2: ( size: 14 * c.$scaling, leading: 20 * c.$scaling, tracking: 0 * c.$scaling ),
+	3: ( size: 16 * c.$scaling, leading: 24 * c.$scaling, tracking: 0 * c.$scaling ),
+	4: ( size: 18 * c.$scaling, leading: 26 * c.$scaling, tracking: -0.0025 * c.$scaling ),
+	5: ( size: 20 * c.$scaling, leading: 28 * c.$scaling, tracking: -0.005 * c.$scaling ),
+	6: ( size: 24 * c.$scaling, leading: 30 * c.$scaling, tracking: -0.00625 * c.$scaling ),
+	7: ( size: 28 * c.$scaling, leading: 36 * c.$scaling, tracking: -0.0075 * c.$scaling ),
+	8: ( size: 35 * c.$scaling, leading: 40 * c.$scaling, tracking: -0.01 * c.$scaling ),
+	9: ( size: 60 * c.$scaling, leading: 60 * c.$scaling, tracking: -0.025 * c.$scaling ),
+);

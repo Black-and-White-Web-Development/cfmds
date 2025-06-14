@@ -1,0 +1,80 @@
+@use "sass:math";
+@use "@/scss/util/functions/unit-converters" as unit;
+@use "@/scss/util/functions/get-typographic-values" as font;
+
+@mixin _validate-inputs($min-val, $max-val, $min-vw, $max-vw, $property-name) {
+	@if unit($min-val) != "" {
+		@error "#{$property-name}() expects unitless numbers for #{$property-name} values, received '#{$min-val}' with unit '#{unit($min-val)}'. Provide numbers only, in px.";
+	}
+	@if unit($max-val) != "" {
+		@error "#{$property-name}() expects unitless numbers for #{$property-name} values, received '#{$max-val}' with unit '#{unit($max-val)}'. Provide numbers only, in px.";
+	}
+	@if unit($min-vw) != "" {
+		@error "#{$property-name}() expects unitless numbers for min-vw, received '#{$min-vw}' with unit '#{unit($min-vw)}'. Provide numbers only, in px.";
+	}
+	@if unit($max-vw) != "" {
+		@error "#{$property-name}() expects unitless numbers for max-vw, received '#{$max-vw}' with unit '#{unit($max-vw)}'. Provide numbers only, in px.";
+	}
+}
+
+@mixin _fluid-property($property, $unit-type, $min-val, $max-val, $min-vw: 360, $max-vw: 1440) {
+	@include _validate-inputs($min-val, $max-val, $min-vw, $max-vw, $property);
+
+	$min-converted: null;
+	$max-converted: null;
+	$min-vw-converted: null;
+	$max-vw-converted: null;
+
+	@if $unit-type == "rem" {
+		$min-converted: unit.rem($min-val);
+		$max-converted: unit.rem($max-val);
+		$min-vw-converted: unit.rem($min-vw);
+		$max-vw-converted: unit.rem($max-vw);
+	} @else if $unit-type == "em" {
+		$min-converted: unit.em($min-val);
+		$max-converted: unit.em($max-val);
+		$min-vw-converted: unit.em($min-vw);
+		$max-vw-converted: unit.em($max-vw);
+	} @else {
+		$min-converted: $min-val * 1px;
+		$max-converted: $max-val * 1px;
+		$min-vw-converted: $min-vw * 1px;
+		$max-vw-converted: $max-vw * 1px;
+	}
+
+	$factor: math.div(1, ($max-vw-converted - $min-vw-converted)) * ($max-converted - $min-converted);
+	$calc-value: null;
+
+	@if $unit-type == "px" {
+		$calc-value: unquote(
+			"calc(#{$min-converted - ($min-vw-converted * $factor)} + #{100vw * $factor})"
+		);
+	} @else {
+		$calc-value: unquote("#{$min-converted - ($min-vw-converted * $factor)} + #{100vw * $factor}");
+	}
+
+	#{$property}: $min-converted;
+	#{$property}: clamp(
+		#{if($min-converted > $max-converted, $max-converted, $min-converted)},
+		#{$calc-value},
+		#{if($min-converted > $max-converted, $min-converted, $max-converted)}
+	);
+}
+
+@mixin font-size($min-fs, $max-fs, $min-vw: 360, $max-vw: 1440) {
+	@include _fluid-property("font-size", "rem", $min-fs, $max-fs, $min-vw, $max-vw);
+}
+
+@mixin leading($min-leading, $max-leading, $min-vw: 360, $max-vw: 1440) {
+	@include _fluid-property("line-height", "px", $min-leading, $max-leading, $min-vw, $max-vw);
+}
+
+@mixin tracking($min-tracking, $max-tracking, $min-vw: 360, $max-vw: 1440) {
+	@include _fluid-property("letter-spacing", "em", $min-tracking, $max-tracking, $min-vw, $max-vw);
+}
+
+@mixin typography($min-step, $max-step, $min-vw: 360, $max-vw: 1440) {
+	@include font-size(font.size($min-step), font.size($max-step), $min-vw, $max-vw);
+	@include leading(font.leading($min-step), font.leading($max-step), $min-vw, $max-vw);
+	@include tracking(font.tracking($min-step), font.tracking($max-step), $min-vw, $max-vw);
+}

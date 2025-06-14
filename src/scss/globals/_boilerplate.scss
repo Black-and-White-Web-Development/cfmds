@@ -1,0 +1,30 @@
+@use "@/scss/util" as u;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background-1);
+  display: flex;
+	place-items: center;
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+button {
+	font-family: inherit;
+	font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+
+	cursor: pointer;
+
+	&:focus,
+	&:focus-visible {
+		outline: 4px auto -webkit-focus-ring-color;
+	}
+}

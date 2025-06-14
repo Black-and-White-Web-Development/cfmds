@@ -1,0 +1,53 @@
+@use "@/scss/util/functions/unit-converters" as unit;
+@use "@/scss/util/functions/get-radius-preset" as radius;
+
+// ----------------------------------------------------------------
+// Colour settings
+// ----------------------------------------------------------------
+
+// Neutral tints
+$grey: 0; //    | Untinted    | Accent hues 000 - 360 |
+$mauve: 265; // | Base purple | Accent hues 251 - 010 |
+$slate: 232; // | Base blue   | Accent hues 181 - 250 |
+$sage: 154; //  | Base green  | Accent hues 131 - 180 |
+$olive: 114; // | Base lime   | Accent hues 061 - 130 |
+$sand: 50; //   | Base yellow | Accent hues 011 - 060 |
+
+// Palette configuration
+$neutral-hue: $grey;
+$accent-hue: 0;
+$accent-saturation: 50;
+
+// ----------------------------------------------------------------
+// Scaling settings
+// ----------------------------------------------------------------
+
+// Scales the UI density uniformly across the project
+$scaling: 1 !default;
+
+// ----------------------------------------------------------------
+// Radius settings
+// ----------------------------------------------------------------
+
+// Presets: none / small / medium / large
+$radius-factor: radius.get-radius-preset("small") !default;
+
+// ----------------------------------------------------------------
+// Breakpoint settings
+// ----------------------------------------------------------------
+
+$breakpoints-up: (
+	"phone-landscape": unit.em(520),
+	"tablet": unit.em(768),
+	"laptop": unit.em(1024),
+	"desktop": unit.em(1280),
+	"desktop-wide": unit.em(1640),
+);
+
+$breakpoints-down: (
+	"phone-portrait": unit.em(519.98),
+	"phone-landscape": unit.em(767.98),
+	"tablet": unit.em(1023.98),
+	"laptop": unit.em(1279.98),
+	"desktop": unit.em(1639.98),
+);

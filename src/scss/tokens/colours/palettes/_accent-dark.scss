@@ -1,0 +1,27 @@
+@mixin accent-dark($hue, $saturation) {
+	--accent-1: hsl(#{$hue} #{$saturation} 8%);
+	--accent-2: hsl(#{$hue} #{$saturation} 10%);
+	--accent-3: hsl(#{$hue} #{$saturation} 15%);
+	--accent-4: hsl(#{$hue} #{$saturation} 19%);
+	--accent-5: hsl(#{$hue} #{$saturation} 24%);
+	--accent-6: hsl(#{$hue} #{$saturation} 29%);
+	--accent-7: hsl(#{$hue} #{$saturation} 37%);
+	--accent-8: hsl(#{$hue} #{$saturation} 48%);
+	--accent-9: hsl(#{$hue} #{$saturation} 59%);
+	--accent-10: hsl(#{$hue} #{$saturation} 64%);
+	--accent-11: hsl(#{$hue} #{$saturation} 79%);
+	--accent-12: hsl(#{$hue} #{$saturation} 91%);
+
+	--accent-a1: hsl(#{$hue} #{$saturation} 8% / 0.012);
+	--accent-a2: hsl(#{$hue} #{$saturation} 10% / 0.027);
+	--accent-a3: hsl(#{$hue} #{$saturation} 15% / 0.047);
+	--accent-a4: hsl(#{$hue} #{$saturation} 19% / 0.071);
+	--accent-a5: hsl(#{$hue} #{$saturation} 24% / 0.090);
+	--accent-a6: hsl(#{$hue} #{$saturation} 29% / 0.114);
+	--accent-a7: hsl(#{$hue} #{$saturation} 37% / 0.141);
+	--accent-a8: hsl(#{$hue} #{$saturation} 48% / 0.220);
+	--accent-a9: hsl(#{$hue} #{$saturation} 59% / 0.439);
+	--accent-a10: hsl(#{$hue} #{$saturation} 64% / 0.478);
+	--accent-a11: hsl(#{$hue} #{$saturation} 79% / 0.565);
+	--accent-a12: hsl(#{$hue} #{$saturation} 91% / 0.910);
+}

@@ -1,0 +1,72 @@
+/* prettier-ignore */
+@mixin shadows-light {
+  --shadow-1:
+    inset 0 0 1px 1px var(--grey-a5),
+    inset 0 1.5px 2px 0 var(--grey-a4),
+    inset 0 1.5px 2px 0 var(--black-a4);
+
+  --shadow-2:
+    0 0 0.5px 1px var(--grey-a2),
+    0 0 0.5px 0.5px var(--black-a2),
+    0 1px 1px 0 var(--grey-a4),
+    0 2px 1px -1px var(--black-a3),
+    0 1px 3px 0 var(--black-a3);
+
+  --shadow-3:
+    0 0 1px 1px var(--grey-a2),
+    0 2px 3px -2px var(--grey-a2),
+    0 3px 12px -4px var(--black-a6),
+    0 4px 16px -8px var(--black-a6);
+
+  --shadow-4:
+    0 0 1px 1px var(--grey-a3),
+    0 8px 40px var(--black-a4),
+    0 12px 32px -16px var(--grey-a7);
+
+  --shadow-5:
+    0 0 1px 1px var(--grey-a3),
+    0 12px 60px var(--black-a6),
+    0 12px 32px -16px var(--grey-a8);
+
+  --shadow-6:
+    0 0 1px 1px var(--grey-a3),
+    0 12px 60px var(--black-a6),
+    0 16px 64px var(--grey-a7),
+    0 16px 36px -20px var(--grey-a10);
+
+  @supports (color: color-mix(in oklab, white, black)) {
+    --shadow-1:
+      inset 0 0 1px 1px var(--grey-a5),
+      inset 0 1.5px 2px 0 var(--grey-a4),
+      inset 0 1.5px 2px 0 var(--black-a4);
+
+    --shadow-2:
+      0 0 0.5px 1px color-mix(in oklab, var(--grey-a3), var(--grey-3) 25%),
+      0 0 0.5px 0.5px var(--black-a2),
+      0 1px 1px 0 var(--grey-a4),
+      0 2px 1px -1px var(--black-a3),
+      0 1px 3px 0 var(--black-a3);
+
+    --shadow-3:
+      0 0 1.5px 1px color-mix(in oklab, var(--grey-a3), var(--grey-3) 25%),
+      0 2px 3px -2px var(--grey-a4),
+      0 3px 12px -4px var(--black-a6),
+      0 4px 16px -8px var(--black-a6);
+
+    --shadow-4:
+      0 0 1px 1px color-mix(in oklab, var(--grey-a3), var(--grey-3) 25%),
+      0 8px 40px var(--black-a4),
+      0 12px 32px -16px var(--grey-a7);
+
+    --shadow-5:
+      0 0 1.5px 1px color-mix(in oklab, var(--grey-a3), var(--grey-3) 25%),
+      0 12px 60px var(--black-a6),
+      0 12px 32px -16px var(--grey-a8);
+
+    --shadow-6:
+      0 0 1px 1px color-mix(in oklab, var(--grey-a3), var(--grey-3) 25%),
+      0 12px 60px var(--black-a6),
+      0 16px 64px var(--grey-a7),
+      0 16px 36px -20px var(--grey-a10);
+  }
+}

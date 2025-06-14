@@ -1,0 +1,33 @@
+@use "@/scss/config" as c;
+@use "@/scss/tokens/colours/palettes" as palette;
+@use "@/scss/tokens/colours/scale" as globals;
+
+:root {
+	color-scheme: light dark;
+}
+
+body {
+  @include globals.define-colour-scale();
+  
+  @include palette.black-alpha();
+  @include palette.neutral-light(c.$neutral-hue);
+	@include palette.accent-light(c.$accent-hue, c.$accent-saturation);
+
+	&.dark {
+		@include palette.neutral-dark(c.$neutral-hue);
+		@include palette.accent-dark(c.$accent-hue, c.$accent-saturation);
+	}
+
+	&.light {
+		@include palette.neutral-light(c.$neutral-hue);
+		@include palette.accent-light(c.$accent-hue, c.$accent-saturation);
+	}
+
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		@include palette.neutral-dark(c.$neutral-hue);
+		@include palette.accent-dark(c.$accent-hue, c.$accent-saturation);
+	}
+}

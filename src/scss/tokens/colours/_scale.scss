@@ -1,0 +1,71 @@
+@mixin define-colour-scale() {
+	--success-1: hsl(140 60% 60%);
+	--success-2: hsl(140 60% 50%);
+	--success-3: hsl(140 60% 40%);
+
+	--warning-1: hsl(50 90% 60%);
+	--warning-2: hsl(50 90% 50%);
+	--warning-3: hsl(50 90% 40%);
+
+	--error-1: hsl(10 80% 60%);
+	--error-2: hsl(10 80% 50%);
+	--error-3: hsl(10 80% 40%);
+
+	--info-1: var(--accent-3);
+	--info-2: var(--accent-4);
+	--info-3: var(--accent-5);
+
+	--background-0: var(--grey-0);
+	--background-1: var(--grey-1);
+	--background-2: var(--grey-2);
+	--background-a1: var(--grey-a1);
+	--background-a2: var(--grey-a2);
+	--background-accent-1: var(--accent-1);
+	--background-accent-2: var(--accent-2);
+	--background-accent-a1: var(--accent-a1);
+	--background-accent-a2: var(--accent-a2);
+
+	--interactive-1: var(--grey-3);
+	--interactive-2: var(--grey-4);
+	--interactive-3: var(--grey-5);
+	--interactive-a1: var(--grey-a3);
+	--interactive-a2: var(--grey-a4);
+	--interactive-a3: var(--grey-a5);
+	--interactive-accent-1: var(--accent-3);
+	--interactive-accent-2: var(--accent-4);
+	--interactive-accent-3: var(--accent-5);
+	--interactive-accent-a1: var(--accent-a3);
+	--interactive-accent-a2: var(--accent-a4);
+	--interactive-accent-a3: var(--accent-a5);
+
+	--border-1: var(--grey-6);
+	--border-2: var(--grey-7);
+	--border-3: var(--grey-8);
+	--border-a1: var(--grey-a6);
+	--border-a2: var(--grey-a7);
+	--border-a3: var(--grey-a8);
+	--border-accent-1: var(--accent-6);
+	--border-accent-2: var(--accent-7);
+	--border-accent-3: var(--accent-8);
+	--border-accent-a1: var(--accent-a6);
+	--border-accent-a2: var(--accent-a7);
+	--border-accent-a3: var(--accent-a8);
+
+	--solid-1: var(--grey-9);
+	--solid-2: var(--grey-10);
+	--solid-a1: var(--grey-a9);
+	--solid-a2: var(--grey-a10);
+	--solid-accent-1: var(--accent-9);
+	--solid-accent-2: var(--accent-10);
+	--solid-accent-a1: var(--accent-a9);
+	--solid-accent-a2: var(--accent-a10);
+
+	--text-1: var(--grey-12);
+	--text-2: var(--grey-11);
+	--text-a1: var(--grey-a12);
+	--text-a2: var(--grey-a11);
+	--text-accent-1: var(--accent-12);
+	--text-accent-2: var(--accent-11);
+	--text-accent-a1: var(--accent-a12);
+	--text-accent-a2: var(--accent-a11);
+}

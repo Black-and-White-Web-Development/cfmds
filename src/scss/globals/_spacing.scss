@@ -1,0 +1,5 @@
+@use "@/scss/tokens/spacing" as globals;
+
+body {
+	@include globals.define-spacing-scale();
+}

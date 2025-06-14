@@ -1,0 +1,19 @@
+@use "@/scss/tokens/shadows" as globals;
+
+body {
+	@include globals.shadows-light();
+
+	&.dark {
+		@include globals.shadows-dark();
+	}
+
+	&.light {
+		@include globals.shadows-light();
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		@include globals.shadows-dark();
+	}
+}

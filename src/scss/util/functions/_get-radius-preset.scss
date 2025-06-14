@@ -1,0 +1,10 @@
+@use "@/scss/tokens/radius/presets" as presets;
+
+@function get-radius-preset($preset-name) {
+	@if map-has-key(presets.$radius-presets, $preset-name) {
+		@return map-get(presets.$radius-presets, $preset-name);
+	} @else {
+		@warn "Radius preset '#{$preset-name}' not found. Available presets: #{map-keys(presets.$radius-presets)}";
+		@return 1;
+	}
+}

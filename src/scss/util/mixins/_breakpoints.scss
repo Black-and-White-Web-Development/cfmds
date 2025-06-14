@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "@/scss/config" as c;
+@use "@/scss/util/functions/list-breakpoints" as f;
+
+@mixin breakpoint($size) {
+  @if not map.has-key(c.$breakpoints-up, $size) {
+    @error "Invalid breakpoint `#{$size}`. Available breakpoints are:#{f.list-breakpoints(c.$breakpoints-up)}";
+  }
+
+  @media (min-width: map.get(c.$breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @if not map.has-key(c.$breakpoints-down, $size) {
+    @error "Invalid breakpoint `#{$size}`. Available breakpoints are:#{f.list-breakpoints(c.$breakpoints-down)}";
+  }
+
+  @media (max-width: map.get(c.$breakpoints-down, $size)) {
+    @content;
+  }
+}

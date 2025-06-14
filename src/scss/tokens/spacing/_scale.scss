@@ -1,0 +1,14 @@
+@use "@/scss/config" as c;
+@use "@/scss/util" as unit;
+
+@mixin define-spacing-scale {
+	--space-1: calc(#{unit.rem(4)} * #{c.$scaling});
+	--space-2: calc(#{unit.rem(8)} * #{c.$scaling});
+	--space-3: calc(#{unit.rem(12)} * #{c.$scaling});
+	--space-4: calc(#{unit.rem(16)} * #{c.$scaling});
+	--space-5: calc(#{unit.rem(24)} * #{c.$scaling});
+	--space-6: calc(#{unit.rem(32)} * #{c.$scaling});
+	--space-7: calc(#{unit.rem(40)} * #{c.$scaling});
+	--space-8: calc(#{unit.rem(48)} * #{c.$scaling});
+	--space-9: calc(#{unit.rem(64)} * #{c.$scaling});
+}

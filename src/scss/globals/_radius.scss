@@ -1,0 +1,5 @@
+@use "@/scss/tokens/radius" as globals;
+
+body {
+	@include globals.define-radius-scale();
+}

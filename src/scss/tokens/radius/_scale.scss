@@ -1,0 +1,13 @@
+@use "@/scss/config" as c;
+
+@mixin define-radius-scale {
+	--radius-1: calc(3px * #{c.$scaling} * #{c.$radius-factor});
+	--radius-2: calc(4px * #{c.$scaling} * #{c.$radius-factor});
+	--radius-3: calc(6px * #{c.$scaling} * #{c.$radius-factor});
+	--radius-4: calc(8px * #{c.$scaling} * #{c.$radius-factor});
+	--radius-5: calc(12px * #{c.$scaling} * #{c.$radius-factor});
+	--radius-6: calc(16px * #{c.$scaling} * #{c.$radius-factor});
+
+	--radius-full: #{if(c.$radius-factor == 0, 0px, 9999px)};
+	--radius-thumb: #{if(c.$radius-factor == 0 or c.$radius-factor == 0.75, 0.5px, 9999px)};
+}

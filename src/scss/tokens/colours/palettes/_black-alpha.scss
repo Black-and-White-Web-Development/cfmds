@@ -1,0 +1,14 @@
+@mixin black-alpha() {
+	--black-a1: hsl(0 0% 0% / 0.012);
+	--black-a2: hsl(0 0% 0% / 0.027);
+	--black-a3: hsl(0 0% 0% / 0.047);
+	--black-a4: hsl(0 0% 0% / 0.071);
+	--black-a5: hsl(0 0% 0% / 0.09);
+	--black-a6: hsl(0 0% 0% / 0.114);
+	--black-a7: hsl(0 0% 0% / 0.141);
+	--black-a8: hsl(0 0% 0% / 0.22);
+	--black-a9: hsl(0 0% 0% / 0.439);
+	--black-a10: hsl(0 0% 0% / 0.478);
+	--black-a11: hsl(0 0% 0% / 0.565);
+	--black-a12: hsl(0 0% 0% / 0.91);
+}

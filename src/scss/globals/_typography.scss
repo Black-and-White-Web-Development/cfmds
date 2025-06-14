@@ -1,0 +1,92 @@
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+@use "@/scss/util/functions/get-typographic-values" as font;
+
+:root {
+	--sans-serif: system-ui, Avenir, Helvetica, Arial, sans-serif;
+	--serif: serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+	font-style: normal;
+	font-weight: 400;
+	font-optical-sizing: auto;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	line-height: 1.5;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	color: var(--text-1);
+	font-family: var(--sans-serif);
+}
+
+h1 {
+  @include fluid.typography(7, 9);
+  font-weight: var(--fw-bold)
+}
+
+h2 {
+  @include fluid.typography(6, 8);
+  font-weight: var(--fw-medium)
+}
+
+h3 {
+  @include fluid.typography(5, 7);
+  font-weight: var(--fw-medium)
+}
+
+h4 {
+  @include fluid.typography(4, 6);
+  font-weight: var(--fw-medium)
+}
+
+h5 {
+  @include fluid.typography(3, 5);
+  font-weight: var(--fw-medium)
+}
+
+h6 {
+  @include fluid.typography(3, 4);
+  font-weight: var(--fw-medium)
+}
+
+a,
+blockquote,
+button,
+code,
+em,
+figcaption,
+p,
+pre,
+q,
+span,
+strong {
+  @include fluid.typography(2, 3);
+
+  &.small {
+    @include fluid.typography(1, 2);
+  }
+  
+  &.large {
+    @include fluid.typography(3, 4);
+  }
+}
+
+small {
+  @include fluid.typography(1, 2);
+}
+
+a {
+	color: var(--text-accent-1);
+	text-decoration: inherit;
+
+	&:hover {
+		color: var(--text-accent-2);
+	}
+}

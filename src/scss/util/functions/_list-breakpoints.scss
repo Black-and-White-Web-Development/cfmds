@@ -1,0 +1,12 @@
+@use "sass:math";
+
+@function list-breakpoints($breakpoints-map) {
+	$list: "";
+
+	@each $key, $value in $breakpoints-map {
+		$px-value: ceil(math.div($value, 1em) * 16);
+		$list: $list + " #{$key}: #{$px-value}px;";
+	}
+
+	@return $list;
+}
