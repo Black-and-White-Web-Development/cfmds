@@ -1,0 +1,6 @@
+https://cfmds.com/*       https://cfmds.org.uk/:splat 301!
+https://www.cfmds.com/*   https://cfmds.org.uk/:splat 301!
+https://cfmds.co.uk/*     https://cfmds.org.uk/:splat 301!
+https://www.cfmds.co.uk/* https://cfmds.org.uk/:splat 301!
+
+/* /index.html 200

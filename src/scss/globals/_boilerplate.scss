@@ -7,8 +7,9 @@
 }
 
 body {
-  background-color: var(--background-1);
+  background-color: var(--background-2);
   display: flex;
+  justify-content: center;
 	place-items: center;
 	margin: 0;
 	min-width: 320px;

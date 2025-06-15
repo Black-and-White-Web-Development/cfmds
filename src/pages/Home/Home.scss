@@ -1,0 +1,67 @@
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.home {
+	max-width: 800px;
+	padding: var(--space-6);
+
+	text-align: center;
+
+	background-color: var(--background-1);
+	border-radius: var(--radius-4);
+	box-shadow: var(--shadow-3);
+
+	&__heading {
+		margin-block-end: var(--space-4);
+		text-wrap: balance;
+
+		@include fluid.typography(6, 8);
+	}
+
+	&__text,
+	&__link {
+		@include fluid.typography(3, 5);
+	}
+
+	&__text {
+		margin-block-end: var(--space-1);
+		text-wrap: pretty;
+	}
+
+	&__links {
+		margin-block-start: var(--space-4);
+	}
+
+	&__link {
+		display: inline-block;
+		max-width: fit-content;
+		min-width: 200px;
+
+		margin: var(--space-1);
+		padding: var(--space-2) var(--space-4);
+
+		font-weight: var(--fw-medium);
+
+		border: {
+			style: solid;
+			width: 2px;
+			color: var(--accent-11);
+			radius: var(--radius-2);
+		}
+
+		transition: {
+			property: color, background-color, border-color;
+			duration: 800ms;
+		}
+
+		color: var(--grey-1);
+		background-color: var(--accent-11);
+
+		&:hover {
+			color: var(--accent-11);
+			background-color: var(--grey-0);
+			border-color: var(--accent-11);
+
+			transition-duration: 200ms;
+		}
+	}
+}
