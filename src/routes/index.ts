@@ -1,6 +1,6 @@
-import type { RouteObject } from "react-router-dom";
-
 import rootRoutes from "./root";
+
+import type { RouteObject } from "react-router-dom";
 
 const routes: RouteObject[] = [...rootRoutes];
 
