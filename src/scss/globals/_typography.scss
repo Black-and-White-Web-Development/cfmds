@@ -2,8 +2,8 @@
 @use "@/scss/util/functions/get-typographic-values" as font;
 
 :root {
-	--sans-serif: system-ui, Avenir, Helvetica, Arial, sans-serif;
-	--serif: serif;
+	--sans-serif: "Roboto Condensed", sans-serif;
+	--serif: "EB Garamond", serif;
 
   --fw-light: 300;
   --fw-regular: 400;
