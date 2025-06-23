@@ -4,11 +4,11 @@ import { NavigationMenu } from "radix-ui";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface Props {
-	name: string;
+	label: string;
 	children: React.ReactNode;
 }
 
-const NavDropdown = function ({ name, children }: Props) {
+export const NavDropdown = function ({ label, children }: Props) {
 	const isMobile = useBreakpoint();
 
 	const caret = isMobile ? (
@@ -18,15 +18,12 @@ const NavDropdown = function ({ name, children }: Props) {
 	);
 
 	return (
-		<NavigationMenu.Item className="nav__list-item nav__list-item--dropdown">
+		<NavigationMenu.Item>
 			<NavigationMenu.Trigger className="nav__trigger">
-				{name}
-				{caret}
+				{label} {caret}
 			</NavigationMenu.Trigger>
-			<NavigationMenu.Content className="nav__content">
-				<NavigationMenu.List className="nav__list nav__list--sub-list">
-					{children}
-				</NavigationMenu.List>
+			<NavigationMenu.Content className="nav__sub-menu-content">
+				<ul className="nav__sub-menu-list">{children}</ul>
 			</NavigationMenu.Content>
 		</NavigationMenu.Item>
 	);

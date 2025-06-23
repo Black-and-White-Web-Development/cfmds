@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
+
 import clsx from "clsx";
 import { NavigationMenu } from "radix-ui";
 import { NavLink, type NavLinkProps } from "react-router-dom";
 
-interface NavItemProps {
+interface NavSubItemProps {
 	to: string;
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 type RouterNavLinkProps = NavLinkProps & {
@@ -19,9 +21,9 @@ const RouterNavLink = (props: RouterNavLinkProps) => {
 			ref={ref}
 			{...rest}
 			className={({ isActive, isPending }) =>
-				clsx("nav__link", {
-					"nav__link--active": isActive,
-					"nav__link--pending": isPending,
+				clsx("nav__sub-link", {
+					"nav__sub-link--active": isActive,
+					"nav__sub-link--pending": isPending,
 				})
 			}
 			end
@@ -29,14 +31,12 @@ const RouterNavLink = (props: RouterNavLinkProps) => {
 	);
 };
 
-const NavItem = function ({ to, children }: NavItemProps) {
+const NavSubItem = function ({ to, children }: NavSubItemProps) {
 	return (
-		<NavigationMenu.Item>
-			<NavigationMenu.Link asChild>
-				<RouterNavLink to={to}>{children}</RouterNavLink>
-			</NavigationMenu.Link>
-		</NavigationMenu.Item>
+		<NavigationMenu.Link asChild>
+			<RouterNavLink to={to}>{children}</RouterNavLink>
+		</NavigationMenu.Link>
 	);
 };
 
-export default NavItem;
+export default NavSubItem;

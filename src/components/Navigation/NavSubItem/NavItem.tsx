@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
+
 import clsx from "clsx";
 import { NavigationMenu } from "radix-ui";
 import { NavLink, type NavLinkProps } from "react-router-dom";
 
 interface NavItemProps {
 	to: string;
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 type RouterNavLinkProps = NavLinkProps & {
