@@ -18,7 +18,7 @@ export const NavDropdown = function ({ label, children }: Props) {
 	);
 
 	return (
-		<NavigationMenu.Item>
+		<NavigationMenu.Item className="nav__list-item">
 			<NavigationMenu.Trigger className="nav__trigger">
 				{label} {caret}
 			</NavigationMenu.Trigger>

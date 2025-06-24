@@ -1,19 +1,17 @@
-import type { ReactNode } from "react";
-
 import clsx from "clsx";
 import { NavigationMenu } from "radix-ui";
 import { NavLink, type NavLinkProps } from "react-router-dom";
 
 interface NavSubItemProps {
 	to: string;
-	children: ReactNode;
+	children: React.ReactNode;
 }
 
-type RouterNavLinkProps = NavLinkProps & {
+type RouterNavSubLinkProps = NavLinkProps & {
 	ref?: React.Ref<HTMLAnchorElement>;
 };
 
-const RouterNavLink = (props: RouterNavLinkProps) => {
+const RouterSubNavLink = (props: RouterNavSubLinkProps) => {
 	const { ref, ...rest } = props;
 
 	return (
@@ -33,9 +31,11 @@ const RouterNavLink = (props: RouterNavLinkProps) => {
 
 const NavSubItem = function ({ to, children }: NavSubItemProps) {
 	return (
-		<NavigationMenu.Link asChild>
-			<RouterNavLink to={to}>{children}</RouterNavLink>
-		</NavigationMenu.Link>
+		<li className="nav__sub-list-item">
+			<NavigationMenu.Link asChild>
+				<RouterSubNavLink to={to}>{children}</RouterSubNavLink>
+			</NavigationMenu.Link>
+		</li>
 	);
 };
 

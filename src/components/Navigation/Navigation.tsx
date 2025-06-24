@@ -17,8 +17,8 @@ const Navigation = () => {
 	return (
 		<NavigationMenu.Root className={clsx("nav", { "nav--mobile": isMobile })}>
 			<div className="nav__logo-container">
-				<Link to="/" aria-label="Home">
-					<img className="nav__logo" src={logo} alt="CFMDS logo" width="32" />
+				<Link className="nav__logo-link" to="/" aria-label="Home">
+					<img className="nav__logo" src={logo} alt="CFMDS logo" width="96" />
 				</Link>
 			</div>
 			<NavigationMenu.List className="nav__list">
@@ -36,9 +36,6 @@ const Navigation = () => {
 					<NavSubItem to="/sections/speech-and-drama">Speech & Drama</NavSubItem>
 					<NavSubItem to="/sections/strings">Strings</NavSubItem>
 					<NavSubItem to="/sections/woodwind">Woodwind</NavSubItem>
-				</NavDropdown>
-				<NavDropdown label="Test">
-					<NavSubItem to="/sections/choirs">Choirs</NavSubItem>
 				</NavDropdown>
 				<NavItem to="/news">News</NavItem>
 				<NavItem to="/contact">Contact</NavItem>

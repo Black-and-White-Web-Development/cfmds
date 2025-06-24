@@ -31,7 +31,7 @@ const RouterNavLink = (props: RouterNavLinkProps) => {
 
 const NavItem = function ({ to, children }: NavItemProps) {
 	return (
-		<NavigationMenu.Item>
+		<NavigationMenu.Item className="nav__list-item">
 			<NavigationMenu.Link asChild>
 				<RouterNavLink to={to}>{children}</RouterNavLink>
 			</NavigationMenu.Link>
