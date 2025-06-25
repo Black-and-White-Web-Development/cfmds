@@ -1,19 +1,30 @@
-import clsx from "clsx";
-
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 import Navigation from "@/components/Navigation";
 import NavigationDialog from "@/components/NavigationDialog";
 import "./Header.scss";
 
-const Header = function () {
-	const isMobile = useBreakpoint();
+import logo from "@/assets/cfmds-logo.svg";
 
-	return (
-		<header className={clsx("header", { "fb-col-wrapper": !isMobile })}>
-			{isMobile ? <NavigationDialog /> : <Navigation />}
+const Header = function () {
+	const isTablet = useBreakpoint();
+
+	const tabletHeader = (
+		<header className="header header--mobile fb-col-wrapper">
+			<div className="header__container">
+				<img className="header__logo" src={logo} alt="CFMDS logo" width="96" />
+				<NavigationDialog />
+			</div>
 		</header>
 	);
+
+	const header = (
+		<header className="header fb-col-wrapper">
+			<Navigation />
+		</header>
+	);
+
+	return isTablet ? tabletHeader : header;
 };
 
 export default Header;

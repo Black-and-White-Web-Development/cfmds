@@ -12,15 +12,27 @@ import "./Navigation.scss";
 import logo from "@/assets/cfmds-logo.svg";
 
 const Navigation = () => {
-	const isMobile = useBreakpoint();
+	const isTablet = useBreakpoint();
+
+	const navLogo = (
+		<div className="nav__logo-container">
+			<Link className="nav__logo-link" to="/" aria-label="Home">
+				<img className="nav__logo" src={logo} alt="CFMDS logo" width="96" />
+			</Link>
+		</div>
+	);
+
+	const navCta = (
+		<div className="nav__cta-container">
+			<Link className="nav__cta" to="/enter">
+				Enter
+			</Link>
+		</div>
+	);
 
 	return (
-		<NavigationMenu.Root className={clsx("nav", { "nav--mobile": isMobile })}>
-			<div className="nav__logo-container">
-				<Link className="nav__logo-link" to="/" aria-label="Home">
-					<img className="nav__logo" src={logo} alt="CFMDS logo" width="96" />
-				</Link>
-			</div>
+		<NavigationMenu.Root className={clsx("nav", { "nav--mobile fb-col-wrapper": isTablet })}>
+			{!isTablet && navLogo}
 			<NavigationMenu.List className="nav__list">
 				<NavItem to="/">Home</NavItem>
 				<NavItem to="/about">About</NavItem>
@@ -46,11 +58,7 @@ const Navigation = () => {
 			<div className="nav__viewport-position">
 				<NavigationMenu.Viewport className="nav__viewport" />
 			</div>
-			<div className="nav__cta-container">
-				<Link className="nav__cta" to="/enter">
-					Enter
-				</Link>
-			</div>
+			{!isTablet && navCta}
 		</NavigationMenu.Root>
 	);
 };

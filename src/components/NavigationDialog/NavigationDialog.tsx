@@ -24,19 +24,21 @@ const NavigationDialog = function () {
 						className="nav-dialog__action nav-dialog__action--trigger"
 						aria-label="Open navigation menu"
 					>
+						Menu
 						<HamburgerMenuIcon className="nav-dialog__icon" />
 					</button>
 				</Dialog.Trigger>
 				<Dialog.Portal>
 					<Dialog.Overlay className="nav-dialog__overlay" />
 					<Dialog.Content className="nav-dialog__content">
-						<header className="nav-dialog__header">
+						<header className="nav-dialog__header fb-col-wrapper">
 							<Dialog.Close asChild>
 								<button
 									type="button"
 									className="nav-dialog__action nav-dialog__action--close"
 									aria-label="Close navigation menu"
 								>
+									Close
 									<Cross1Icon className="nav-dialog__icon" />
 								</button>
 							</Dialog.Close>

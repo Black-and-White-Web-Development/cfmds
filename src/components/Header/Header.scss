@@ -1,17 +1,42 @@
 @use "@/scss/util" as u;
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.header--mobile,
+.nav-dialog__header {
+  --mobile-header-height: 80px;
+}
 
 .header {
 	position: sticky;
   top: 0;
-
-  justify-content: flex-end;
-  align-items: center;
+  z-index: 1;
 
 	width: 100%;
 
 	background-color: var(--grey-0);
 
-  @include u.breakpoint-down(phone-landscape) {
+  &__container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    padding: var(--space-2) 0;
+  }
+
+  &__dialog-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    &-label {
+      @include fluid.typography(3, 4);
+    }
+  }
+
+  &--mobile {
+    height: var(--mobile-header-height);
+    align-items: center;
   }
 }
