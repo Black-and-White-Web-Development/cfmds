@@ -38,9 +38,19 @@
 	}
 
 	&__header {
-    justify-items: flex-end;
+    &-container {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+
     height: var(--mobile-header-height);
 	}
+
+  &__heading {
+    @include fluid.typography(6, 8);
+    font-weight: var(--fw-bold) !important;
+  }
   
 	&__content {
     position: fixed;

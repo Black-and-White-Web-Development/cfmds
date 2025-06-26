@@ -32,16 +32,19 @@ const NavigationDialog = function () {
 					<Dialog.Overlay className="nav-dialog__overlay" />
 					<Dialog.Content className="nav-dialog__content">
 						<header className="nav-dialog__header fb-col-wrapper">
-							<Dialog.Close asChild>
-								<button
-									type="button"
-									className="nav-dialog__action nav-dialog__action--close"
-									aria-label="Close navigation menu"
-								>
-									Close
-									<Cross1Icon className="nav-dialog__action-icon" />
-								</button>
-							</Dialog.Close>
+							<div className="nav-dialog__header-container">
+								<Dialog.Title className="nav-dialog__heading">Menu</Dialog.Title>
+								<Dialog.Close asChild>
+									<button
+										type="button"
+										className="nav-dialog__action nav-dialog__action--close"
+										aria-label="Close navigation menu"
+									>
+										Close
+										<Cross1Icon className="nav-dialog__action-icon" />
+									</button>
+								</Dialog.Close>
+							</div>
 						</header>
 						<Navigation />
 					</Dialog.Content>

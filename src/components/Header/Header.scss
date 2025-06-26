@@ -2,7 +2,8 @@
 @use "@/scss/util/mixins/fluid-sizing" as fluid;
 
 .header--mobile,
-.nav-dialog__header {
+.nav-dialog__header, 
+.nav-dropdown__header {
   --mobile-header-height: 80px;
 }
 

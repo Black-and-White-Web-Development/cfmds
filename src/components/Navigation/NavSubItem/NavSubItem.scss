@@ -5,64 +5,73 @@
 	&__sub-list-item {
 		min-width: fit-content;
 
-		&:first-child {
-			grid-row: 1 / -1;
+    @include u.breakpoint(tablet) {
+      &:first-child {
+        grid-row: 1 / -1;
 
-			& .nav__sub-link {
-				height: 100%;
+        & .nav__sub-link {
+          height: 100%;
+        }
+      }
 
-				background-color: var(--accent-12);
-				color: var(--grey-0);
-				border-color: var(--accent-12);
-
-				transition-property: color, border-color, background-color;
-				transition-duration: 800ms;
-
-				&:hover {
-					border-color: var(--accent-11);
-					background-color: var(--accent-11);
-					transition-duration: 200ms;
-				}
-			}
-		}
-
-		&:nth-child(2) {
-			grid-column: 2 / -1;
-		}
+      &:nth-child(2) {
+        grid-column: 2 / -1;
+      }
+    }
 	}
 
 	&__sub-link {
 		display: block;
 
-		padding: var(--space-3) var(--space-4);
-
-		@include fluid.typography(3, 4);
-		font-weight: var(--fw-medium);
-		line-height: 1;
-		text-wrap: nowrap;
-
-		background-color: var(--interactive-1);
-
-		border-style: solid;
-		border-width: 2px;
-		border-color: var(--interactive-1);
-		border-radius: var(--radius-2);
-
-		transition-property: border-color;
-		transition-duration: 800ms;
-
-		&:hover {
-			color: var(--accent-12);
-			border-color: var(--accent-12);
-			transition-duration: 200ms;
+		&--active {
+      color: var(--accent-11);
+			border-bottom-color: var(--accent-11);
 		}
+    
+    @include u.breakpoint(tablet) {
+      padding: var(--space-2) var(--space-4);
 
-		&--active,
-		&--pending {
-			transition-property: color, background-color, border-color;
-			color: var(--grey-0) !important;
-			background-color: var(--accent-12) !important;
-			border-color: var(--accent-12) !important;
-		}
+      @include fluid.typography(3, 4);
+      font-weight: var(--fw-medium);
+      text-wrap: nowrap;
+
+      background-color: var(--interactive-1);
+
+      border-style: solid;
+      border-width: 2px;
+      border-color: var(--interactive-1);
+      border-radius: var(--radius-2);
+
+      transition-property: border-color;
+      transition-duration: 800ms;
+
+      &:hover {
+        color: var(--accent-12);
+        border-color: var(--accent-12);
+        transition-duration: 200ms;
+      }
+
+      &--active,
+      &--pending {
+        transition-property: color, background-color, border-color;
+        color: var(--grey-0) !important;
+        background-color: var(--accent-12) !important;
+        border-color: var(--accent-12) !important;
+      }
+    }
 	}
+}
+
+.nav--mobile .nav {
+  &__sub-link  {
+    padding-bottom: var(--space-1);
+
+    @include fluid.typography(5, 6, 320, 768);
+    text-wrap: balance;
+    line-height: 1.1;
+
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+    border-bottom-color: transparent;
+  }
 }
