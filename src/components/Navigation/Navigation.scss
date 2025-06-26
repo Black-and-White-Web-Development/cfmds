@@ -14,17 +14,6 @@ p {
 	display: flex;
 	justify-content: space-between;
   align-items: stretch;
-
-  &__logo-link {
-    display: block;
-  }
-  
-  &__logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--space-3);
-  }
   
   &__list {
     list-style: none;
@@ -36,12 +25,6 @@ p {
     height: 100%;
     
     border-radius: var(--radius-3);
-  }
-
-  &__list-item {
-    height: 100%;
-    display: flex;
-    align-items: stretch;
   }
 
   &__trigger,
@@ -72,77 +55,6 @@ p {
       transition-duration: 300ms;
     }
   }
-  
-  &__link {
-    &--active {
-      color: var(--accent-11) !important;
-    }
-  }
-
-  &__trigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2px;
-  }
-
-  &__cta {
-    &-container {
-      display: flex;
-      align-items: center;
-    }
-
-    padding: var(--space-2) var(--space-3);
-
-    @include fluid.typography(3, 4);
-    font-weight: var(--fw-medium);
-    line-height: 1;
-
-    background-color: var(--accent-12);
-    color: var(--grey-0);
-
-    border-style: solid;
-    border-width: 1.5px;
-    border-color: var(--accent-12);
-    border-radius: var(--radius-3);
-
-    transition-property: color, background-color;
-    transition-duration: 800ms;
-    
-    &:hover {
-      color: var(--accent-12);
-      background-color: var(--interactive-1);
-      transition-duration: 200ms;
-    }
-  }
-
-  &__sub-menu-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    animation-duration: 250ms;
-    animation-timing-function: ease;
-
-    &[data-motion="from-start"] {
-      animation-name: enterFromLeft;
-    }
-    &[data-motion="from-end"] {
-      animation-name: enterFromRight;
-    }
-    &[data-motion="to-start"] {
-      animation-name: exitToLeft;
-    }
-    &[data-motion="to-end"] {
-      animation-name: exitToRight;
-    }
-
-    @include u.breakpoint(phone-landscape) {
-      width: auto;
-    }
-  }
 
   &__indicator {
     top: 100%;
@@ -165,9 +77,33 @@ p {
     &[data-state="hidden"] {
       animation: fadeOut 200ms ease;
     }
+
+    &-arrow {
+      position: relative;
+      top: 70%;
+  
+      width: 10px;
+      height: 10px;
+  
+      background-color: var(--grey-0);
+      border-top-left-radius: 2px;
+  
+      transform: rotate(45deg);
+    }
   }
 
   &__viewport {
+    &-container {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      perspective: 2000px;
+  
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
     position: relative;
     overflow: hidden;
 
@@ -196,147 +132,20 @@ p {
       max-width: fit-content;
     }
   }
-
-  &__sub-menu-list {
-    list-style: none;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: var(--space-2);
-    
-    margin: 0;
-    padding: var(--space-3);
-  }
-
-  &__sub-list-item {
-    min-width: fit-content;
-
-    &:first-child {
-      grid-row: 1 / -1;
-
-      & .nav__sub-link {
-        height: 100%;
-
-        background-color: var(--accent-12);
-        color: var(--grey-0);
-        border-color: var(--accent-12);
-        
-        transition-property: color, border-color, background-color;
-        transition-duration: 800ms;
-        
-        &:hover {
-          border-color: var(--accent-11);
-          background-color: var(--accent-11);
-          transition-duration: 200ms;
-        }
-      }
-    }
-
-    &:nth-child(2) {
-      grid-column: 2 / -1;
-    }
-  }
-  
-  &__sub-link {
-    display: block;
-    
-    padding: var(--space-3) var(--space-4);
-    
-    @include fluid.typography(3, 4);
-    font-weight: var(--fw-medium);
-    line-height: 1;
-    text-wrap: nowrap;
-
-    background-color: var(--interactive-1);
-
-    border-style: solid;
-    border-width: 2px;
-    border-color: var(--interactive-1);
-    border-radius: var(--radius-2);
-
-    transition-property: border-color;
-    transition-duration: 800ms;
-    
-    &:hover {
-      color: var(--accent-12);
-      border-color: var(--accent-12);
-      transition-duration: 200ms;
-    }
-
-    &--active,
-    &--pending {
-      transition-property: color, background-color, border-color;
-      color: var(--grey-0) !important;
-      background-color: var(--accent-12) !important;
-      border-color: var(--accent-12) !important;
-    }
-  }
-
-  &__viewport-position {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    top: 100%;
-    left: 0;
-    perspective: 2000px;
-  }
-
-  &__caret {
-    position: relative;
-    color: var(--accent-11);
-    top: 1px;
-    transition: transform 250ms ease;
-  }
-  [data-state="open"] > &__caret {
-    transform: rotate(-180deg);
-  }
-
-  &__indicator-arrow {
-    position: relative;
-    top: 70%;
-
-    width: 10px;
-    height: 10px;
-
-    background-color: var(--grey-0);
-    border-top-left-radius: 2px;
-
-    transform: rotate(45deg);
-  }
 }
 
-.nav--mobile {
-  .nav {
-    &__list {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-3)
-    }
+.nav--mobile .nav {
+  &__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3)
+  }
 
-    &__list-item {
-      justify-content: flex-start;
-    }
+  &__link,
+  &__trigger {
+    padding: 0;
 
-    &__link,
-    &__trigger {
-      padding: 0;
-
-      @include fluid.typography(5, 6, 320, 768);
-      font-weight: var(--fw-bold);
-    }
-    
-    &__link {
-      justify-content: flex-start;
-
-      border-style: solid;
-      border-width: 2px;
-      border-color: transparent;
-
-      &--active {
-        border-bottom-color: var(--accent-11);
-      }
-    }
+    @include fluid.typography(5, 6, 320, 768);
+    font-weight: var(--fw-bold);
   }
 }

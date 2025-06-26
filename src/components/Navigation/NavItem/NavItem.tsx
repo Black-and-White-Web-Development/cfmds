@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { NavigationMenu } from "radix-ui";
 import { NavLink, type NavLinkProps } from "react-router-dom";
+import "./NavItem.scss";
 
 interface NavItemProps {
 	to: string;

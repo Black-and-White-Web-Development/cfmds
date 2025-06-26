@@ -25,7 +25,7 @@ const NavigationDialog = function () {
 						aria-label="Open navigation menu"
 					>
 						Menu
-						<HamburgerMenuIcon className="nav-dialog__icon" />
+						<HamburgerMenuIcon className="nav-dialog__action-icon" />
 					</button>
 				</Dialog.Trigger>
 				<Dialog.Portal>
@@ -39,7 +39,7 @@ const NavigationDialog = function () {
 									aria-label="Close navigation menu"
 								>
 									Close
-									<Cross1Icon className="nav-dialog__icon" />
+									<Cross1Icon className="nav-dialog__action-icon" />
 								</button>
 							</Dialog.Close>
 						</header>

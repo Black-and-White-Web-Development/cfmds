@@ -11,12 +11,12 @@
     @include fluid.typography(3, 4);
     font-weight: var(--fw-normal);
     text-transform: uppercase;
-	}
-
-	&__icon {
-		width: 24px;
-		height: 24px;
-	}
+    
+    &-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
 
 	&__overlay {
 		position: fixed;
@@ -39,7 +39,7 @@
 
 	&__header {
     justify-items: flex-end;
-    height: 80px;
+    height: var(--mobile-header-height);
 	}
   
 	&__content {

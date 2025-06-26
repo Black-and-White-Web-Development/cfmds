@@ -1,38 +1,22 @@
 import clsx from "clsx";
 import { NavigationMenu } from "radix-ui";
-import { Link } from "react-router-dom";
 
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
+import NavCta from "./NavCta";
 import NavDropdown from "./NavDropdown";
 import NavItem from "./NavItem";
+import NavLogo from "./NavLogo";
 import NavSubItem from "./NavSubItem";
-import "./Navigation.scss";
 
-import logo from "@/assets/cfmds-logo.svg";
+import "./Navigation.scss";
 
 const Navigation = () => {
 	const isTablet = useBreakpoint();
 
-	const navLogo = (
-		<div className="nav__logo-container">
-			<Link className="nav__logo-link" to="/" aria-label="Home">
-				<img className="nav__logo" src={logo} alt="CFMDS logo" width="96" />
-			</Link>
-		</div>
-	);
-
-	const navCta = (
-		<div className="nav__cta-container">
-			<Link className="nav__cta" to="/enter">
-				Enter
-			</Link>
-		</div>
-	);
-
 	return (
 		<NavigationMenu.Root className={clsx("nav", { "nav--mobile fb-col-wrapper": isTablet })}>
-			{!isTablet && navLogo}
+			{!isTablet && <NavLogo />}
 			<NavigationMenu.List className="nav__list">
 				<NavItem to="/">Home</NavItem>
 				<NavItem to="/about">About</NavItem>
@@ -55,10 +39,10 @@ const Navigation = () => {
 					<div className="nav__indicator-arrow" />
 				</NavigationMenu.Indicator>
 			</NavigationMenu.List>
-			<div className="nav__viewport-position">
+			<div className="nav__viewport-container">
 				<NavigationMenu.Viewport className="nav__viewport" />
 			</div>
-			{!isTablet && navCta}
+			{!isTablet && <NavCta />}
 		</NavigationMenu.Root>
 	);
 };

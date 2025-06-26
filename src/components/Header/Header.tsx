@@ -1,10 +1,9 @@
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 import Navigation from "@/components/Navigation";
+import NavLogo from "@/components/Navigation/NavLogo";
 import NavigationDialog from "@/components/NavigationDialog";
 import "./Header.scss";
-
-import logo from "@/assets/cfmds-logo.svg";
 
 const Header = function () {
 	const isTablet = useBreakpoint();
@@ -12,7 +11,7 @@ const Header = function () {
 	const tabletHeader = (
 		<header className="header header--mobile fb-col-wrapper">
 			<div className="header__container">
-				<img className="header__logo" src={logo} alt="CFMDS logo" width="96" />
+				<NavLogo />
 				<NavigationDialog />
 			</div>
 		</header>
