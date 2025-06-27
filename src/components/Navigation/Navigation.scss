@@ -1,90 +1,164 @@
 @use "@/scss/util" as u;
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+/* reset */
+button,
+p {
+	all: unset;
+}
 
 .nav {
-	&__list {
-		list-style: none;
-		display: flex;
-		gap: var(--space-1);
+	position: relative;
+	z-index: 1;
 
-		padding-block: var(--space-2);
-
-		&--sub-list {
-			flex-direction: column;
-			gap: 0;
-			padding-block: 0;
-
-			border: solid 1px var(--border-1);
-			background-color: var(--background-2);
-		}
-	}
-  &__content {
-    position: absolute;
-    top: 100%;
-  }
+	display: flex;
+	justify-content: space-between;
+  align-items: stretch;
   
-  &__link,
-  &__trigger {
+  &__list {
+    list-style: none;
+    
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: var(--space-2);
+
+    height: 100%;
     
-		border-style: solid;
-		border-width: 2px;
-		padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-3);
+  }
+
+  &__trigger,
+  &__link {
+    outline: none;
+    user-select: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: var(--space-2) var(--space-3);
     
-		font-weight: 600;
+    @include fluid.typography(3, 4);
+    font-weight: var(--fw-medium);
+    line-height: 1;
+
+    color: var(--grey-12);
+
+    transition-property: color;
+    transition-duration: 800ms;
     
-		color: var(--text-2);
-		background-color: var(--interactive-1);
-		border-color: transparent;
-    border-radius: var(--radius-4);
-
-		transition-property: color, background-color, border-color;
-		transition-duration: 800ms;
-
-		&:hover {
-			color: var(--text-2);
-			background-color: var(--interactive-2);
-			transition-duration: 200ms;
-		}
-
-		&--active {
-      color: var(--text-2);
-      background-color: var(--interactive-3);
-			border-color: var(--border-3);
-      
-      &:hover {
-        color: var(--text-2);
-        background-color: var(--interactive-3);
-      }
-		}
-	}
-
-  &__caret {
-    transition-property: transform;
-    transition-duration: 200ms;
-
-    .nav__trigger[data-state="open"] & {
-      transform: rotate(-180deg);
+    &:focus-visible {
+      outline: solid 2px var(--accent-11);
+    }
+    &:hover {
+      color: var(--accent-11);
+      transition-duration: 300ms;
     }
   }
 
-  &--mobile {
-    .nav {
-      &__list {
-        flex-direction: column;
+  @include u.breakpoint(tablet) {
+    &__indicator {
+      top: 100%;
+      overflow: hidden;
+      z-index: 1;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      height: 10px;
+
+      transition-property: width, transform;
+      transition-duration: 250ms;
+      transition-timing-function: ease;
+
+      &[data-state="visible"] {
+        animation: fadeIn 200ms ease;
+      }
+      &[data-state="hidden"] {
+        animation: fadeOut 200ms ease;
       }
 
-      &__list-item {
-        &--dropdown {
-          position: relative;
-        }
+      &-arrow {
+        position: relative;
+        top: 70%;
+    
+        width: 10px;
+        height: 10px;
+    
+        background-color: var(--grey-0);
+        border-top-left-radius: 2px;
+    
+        transform: rotate(45deg);
+      }
+    }
+
+    &__viewport {
+      &-container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        perspective: 2000px;
+    
+        display: flex;
+        justify-content: center;
+        width: 100%;
       }
 
-      &__content {
-        left: 100%;
-        top: 0;
+      position: relative;
+      overflow: hidden;
+
+      transform-origin: top center;
+      margin-top: 9px;
+      
+      height: var(--radix-navigation-menu-viewport-height);
+      min-width: var(--radix-navigation-menu-viewport-width, 640px);
+      max-width: fit-content;
+
+      background-color: var(--grey-0);
+      border-radius: 6px;
+      
+      transition-property: width, height;
+      transition-duration: 300ms;
+      transition-timing-function: ease;
+      
+      &[data-state="open"] {
+        animation: scaleIn 200ms ease;
+        box-shadow: var(--shadow-4);
       }
+      &[data-state="closed"] {
+        animation: scaleOut 200ms ease;
+      }
+    }
+  }
+}
+
+.nav--mobile .nav {
+  &__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3)
+  }
+
+  &__link,
+  &__trigger {
+    padding: 0;
+
+    @include fluid.typography(5, 6, 320, 768);
+    font-weight: var(--fw-medius);
+  }
+
+  &__viewport {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    &[data-state="open"] {
+      animation: enterFromRight 200ms ease;
+      box-shadow: var(--shadow-4);
+    }
+    &[data-state="closed"] {
+      animation: exitToRight 200ms ease;
     }
   }
 }

@@ -1,0 +1,18 @@
+@use "@/scss/util" as u;
+
+.nav-logo {
+	&__image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: var(--space-2) 0;
+
+		@include u.breakpoint(tablet) {
+			padding: var(--space-3);
+		}
+	}
+
+	&__link {
+		display: block;
+	}
+}

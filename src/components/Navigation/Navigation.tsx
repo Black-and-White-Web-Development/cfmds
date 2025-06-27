@@ -3,35 +3,46 @@ import { NavigationMenu } from "radix-ui";
 
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
+import NavCta from "./NavCta";
 import NavDropdown from "./NavDropdown";
 import NavItem from "./NavItem";
+import NavLogo from "./NavLogo";
+import NavSubItem from "./NavSubItem";
+
 import "./Navigation.scss";
 
-const Navigation = function () {
-	const isMobile = useBreakpoint();
+const Navigation = () => {
+	const isTablet = useBreakpoint();
 
 	return (
-		<NavigationMenu.Root className={clsx("nav", { "nav--mobile": isMobile })}>
+		<NavigationMenu.Root className={clsx("nav", { "nav--mobile fb-col-wrapper": isTablet })}>
+			{!isTablet && <NavLogo />}
 			<NavigationMenu.List className="nav__list">
-				<NavItem to="/" name="Home" />
-				<NavItem to="/about" name="About" />
-				<NavDropdown name="Sections">
+				<NavItem to="/">Home</NavItem>
+				<NavItem to="/about">About</NavItem>
+				<NavDropdown label="Sections">
+					<NavSubItem to="/sections/dance">Dance</NavSubItem>
 					{/* prettier-ignore */}
-					<NavItem to="/sections/brass-orchestras-bands-percussion" name="Brass, Orchestras, Bands & Percussion" />
-					<NavItem to="/sections/choirs" name="Choirs" />
-					<NavItem to="/sections/classical-guitar" name="Classical Guitar" />
-					<NavItem to="/sections/dance" name="Dance" />
-					<NavItem to="/sections/organ" name="Organ" />
-					<NavItem to="/sections/pianoforte" name="Pianoforte" />
-					<NavItem to="/sections/singing" name="Singing" />
-					<NavItem to="/sections/strings" name="Strings" />
-					<NavItem to="/sections/speech-and-drama" name="Speech & Drama" />
-					<NavItem to="/sections/woodwind" name="Woodwind" />
+					<NavSubItem to="/sections/brass-orchestras-bands-percussion">Brass, Orchestras, Bands & Percussion</NavSubItem>
+					<NavSubItem to="/sections/choirs">Choirs</NavSubItem>
+					<NavSubItem to="/sections/classical-guitar">Classical Guitar</NavSubItem>
+					<NavSubItem to="/sections/organ">Organ</NavSubItem>
+					<NavSubItem to="/sections/pianoforte">Pianoforte</NavSubItem>
+					<NavSubItem to="/sections/singing">Singing</NavSubItem>
+					<NavSubItem to="/sections/speech-and-drama">Speech & Drama</NavSubItem>
+					<NavSubItem to="/sections/strings">Strings</NavSubItem>
+					<NavSubItem to="/sections/woodwind">Woodwind</NavSubItem>
 				</NavDropdown>
-				<NavItem to="/news" name="News" />
-				<NavItem to="/contact" name="Contact" />
-				<NavItem to="/enter" name="Enter" />
+				<NavItem to="/news">News</NavItem>
+				<NavItem to="/contact">Contact</NavItem>
+				<NavigationMenu.Indicator className="nav__indicator">
+					<div className="nav__indicator-arrow" />
+				</NavigationMenu.Indicator>
 			</NavigationMenu.List>
+			<div className="nav__viewport-container">
+				<NavigationMenu.Viewport className="nav__viewport" />
+			</div>
+			{!isTablet && <NavCta />}
 		</NavigationMenu.Root>
 	);
 };
