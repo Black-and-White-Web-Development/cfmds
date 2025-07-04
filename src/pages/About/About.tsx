@@ -21,7 +21,7 @@ const About = function () {
 
 	return (
 		<>
-			<h1>{content.heading}</h1>
+			<h1>{content.heading || content.title}</h1>
 			{content.blocks && <BlockRenderer blocks={content.blocks} />}
 		</>
 	);

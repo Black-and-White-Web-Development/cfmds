@@ -1,6 +1,8 @@
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import RichTextRenderer from "@/components/blocks/RichTextRenderer";
 
 import type { ChairsWelcomeBlock } from "@/types/strapi/blocks/chairs-welcome.types";
+
+import "./ChairsWelcome.scss";
 
 interface ChairsWelcomeProps {
 	block: ChairsWelcomeBlock;
@@ -8,21 +10,20 @@ interface ChairsWelcomeProps {
 
 const ChairsWelcome = ({ block }: ChairsWelcomeProps) => {
 	return (
-		<section className="chairs-welcome">
+		<section className="block chairs-welcome">
+			<div className="chairs-welcome__image-container">
+				<img
+					className="chairs-welcome__image"
+					src={block.avatar.url}
+					alt={block.avatar.alternativeText || "Chair's photo"}
+					width={block.avatar.width}
+					height={block.avatar.height}
+				/>
+			</div>
 			<div className="chairs-welcome__content">
 				<h2>{block.heading}</h2>
-				<BlocksRenderer content={block.body} />
+				<RichTextRenderer content={block.body} />
 			</div>
-			{block.avatar && (
-				<div className="chairs-welcome__avatar">
-					<img
-						src={block.avatar.url}
-						alt={block.avatar.alternativeText || "Chair's photo"}
-						width={block.avatar.width}
-						height={block.avatar.height}
-					/>
-				</div>
-			)}
 		</section>
 	);
 };

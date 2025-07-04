@@ -5,7 +5,9 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
 		padding: var(--space-2) 0;
+    width: 96px;
 
 		@include u.breakpoint(tablet) {
 			padding: var(--space-3);

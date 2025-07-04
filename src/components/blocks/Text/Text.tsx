@@ -1,7 +1,6 @@
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import RichTextRenderer from "@/components/blocks/RichTextRenderer";
 
 import type { TextBlock } from "@/types/strapi";
-// import "./Text.scss";
 
 interface TextProps {
 	block: TextBlock;
@@ -9,15 +8,8 @@ interface TextProps {
 
 const Text = ({ block }: TextProps) => {
 	return (
-		<section className="text">
-			<div className="text__content">
-				<BlocksRenderer
-					content={block.body}
-					blocks={{
-						paragraph: ({ children }) => <p className="text__paragraph">{children}</p>,
-					}}
-				/>
-			</div>
+		<section className="block text">
+			<RichTextRenderer content={block.body} />
 		</section>
 	);
 };

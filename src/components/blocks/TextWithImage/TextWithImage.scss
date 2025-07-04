@@ -1,0 +1,32 @@
+@use "@/scss/util" as u;
+
+.text-with-image {
+	display: flex;
+	gap: var(--space-7);
+
+	&--left {
+		flex-direction: row;
+	}
+	&--right {
+		flex-direction: row-reverse;
+	}
+
+	@include u.breakpoint-down(phone-landscape) {
+		flex-direction: column;
+	}
+
+	&__text,
+	&__image-container {
+		flex: 1;
+	}
+
+	&__image-container {
+		border-radius: var(--radius-4);
+		overflow: hidden;
+	}
+
+	&__image {
+		height: 100%;
+		object-fit: cover;
+	}
+}

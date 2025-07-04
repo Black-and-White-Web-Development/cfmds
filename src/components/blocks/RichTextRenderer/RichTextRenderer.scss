@@ -1,0 +1,26 @@
+.text {
+	min-width: 30ch;
+
+	&__heading-2 {
+		margin-block-start: var(--space-6);
+		margin-block-end: var(--space-4);
+	}
+	&__heading-3 {
+		margin-block-start: var(--space-4);
+		margin-block-end: var(--space-2);
+	}
+
+	&__paragraph {
+		display: block;
+		margin-block-start: var(--space-2);
+		margin-block-end: var(--space-1);
+
+		&:last-child {
+			margin-block-end: 0;
+		}
+	}
+
+	&__list-item {
+		margin-inline-start: 1rem;
+	}
+}
