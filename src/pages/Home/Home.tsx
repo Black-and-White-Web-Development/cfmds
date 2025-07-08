@@ -20,12 +20,7 @@ const Home = function () {
 		return <div className="error">This page has no content.</div>;
 	}
 
-	return (
-		<>
-			<h1>{content.heading}</h1>
-			{content.blocks && <BlockRenderer blocks={content.blocks} />}
-		</>
-	);
+	return content.blocks && <BlockRenderer blocks={content.blocks} />;
 };
 
 export default Home;
