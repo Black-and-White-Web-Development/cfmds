@@ -27,33 +27,41 @@ body {
 }
 
 h1 {
-  @include fluid.typography(7, 9);
-  font-weight: var(--fw-bold)
+  @include fluid.typography(8, 9);
+  font-weight: var(--fw-bold);
 }
 
 h2 {
-  @include fluid.typography(6, 8);
-  font-weight: var(--fw-medium)
+  margin-block-start: var(--space-6);
+  margin-block-end: var(--space-4);
+
+  @include fluid.typography(7, 8);
+  font-weight: var(--fw-light);
+  text-transform: uppercase;
+
+  &:first-child {
+    margin-block-start: 0;
+  }
 }
 
 h3 {
-  @include fluid.typography(5, 7);
-  font-weight: var(--fw-medium)
+  @include fluid.typography(5, 6);
+  font-weight: var(--fw-medium);
 }
 
 h4 {
-  @include fluid.typography(4, 6);
-  font-weight: var(--fw-medium)
+  @include fluid.typography(4, 5);
+  font-weight: var(--fw-medium);
 }
 
 h5 {
   @include fluid.typography(3, 5);
-  font-weight: var(--fw-medium)
+  font-weight: var(--fw-medium);
 }
 
 h6 {
   @include fluid.typography(3, 4);
-  font-weight: var(--fw-medium)
+  font-weight: var(--fw-medium);
 }
 
 a,
@@ -62,20 +70,28 @@ button,
 code,
 em,
 figcaption,
+ol,
 p,
 pre,
 q,
 span,
-strong {
-  @include fluid.typography(2, 3);
+strong,
+ul {
+  @include fluid.typography(3, 4);
 
   &.small {
-    @include fluid.typography(1, 2);
+    @include fluid.typography(2, 3);
   }
   
   &.large {
-    @include fluid.typography(3, 4);
+    @include fluid.typography(4, 5);
   }
+}
+
+p,
+ul,
+ol {
+  font-family: var(--serif)
 }
 
 small {

@@ -1,0 +1,11 @@
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.faqs {
+	&__question {
+		@include fluid.typography(4, 5);
+	}
+
+	&__item {
+		margin-block-end: var(--space-5);
+	}
+}

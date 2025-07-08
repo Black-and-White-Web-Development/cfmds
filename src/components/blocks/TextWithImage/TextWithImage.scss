@@ -1,0 +1,63 @@
+@use "@/scss/util" as u;
+
+.text-with-image {
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+	gap: var(--space-7);
+
+  @include u.breakpoint-down(tablet) {
+    &__image-container {
+      max-height: max(300px, 50vw);
+    }
+  }
+
+	@include u.breakpoint(laptop) {
+		flex-direction: row;
+
+    &--left {
+      flex-direction: row;
+    }
+    &--right {
+      flex-direction: row-reverse;
+    }
+
+    &--landscape {
+      & .text-with-image__text {
+        flex-basis: 80%;
+      }
+      & .text-with-image__image-container {
+        flex-basis: 100%;
+      }
+    }
+    &--portrait {
+      & .text-with-image__text {
+        flex-basis: 80%;
+      }
+      & .text-with-image__image-container {
+        flex-basis: max(40%, 600px);
+      }
+    }
+	}
+
+  &__image-container {
+    height: 100%;
+    width: 100%;
+
+    border-radius: var(--radius-4);
+		overflow: hidden;
+
+    &--landscape {
+      flex-basis: 100%;
+    }
+    &--portrait {
+      flex-basis: max(40%, 600px);
+    }
+  }
+  
+	&__image {
+    height: 100%;
+		object-fit: cover;
+    object-position: 40% 20%;
+	}
+}

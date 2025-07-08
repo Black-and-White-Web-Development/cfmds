@@ -1,0 +1,57 @@
+@use "@/scss/util" as u;
+
+.chairs-welcome {
+  position: relative;
+	display: flex;
+	gap: var(--space-4);
+
+	flex-direction: column-reverse;
+
+	display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+	gap: var(--space-7);
+
+  @include u.breakpoint-down(tablet) {
+    &__image-container {
+      max-height: max(300px, 50vw);
+    }
+  }
+
+	@include u.breakpoint(laptop) {
+		flex-direction: row;
+
+    &--left {
+      flex-direction: row;
+    }
+    &--right {
+      flex-direction: row-reverse;
+    }
+    & .chairs-welcome__text {
+      flex-basis: 80%;
+    }
+    & .chairs-welcome__image-container {
+      flex-basis: max(40%, 600px);
+    }
+	}
+
+  &__image-container { 
+    width: 100%;
+
+    border-radius: var(--radius-4);
+		overflow: hidden;
+
+    flex-basis: max(40%, 600px);
+
+    @include u.breakpoint(laptop) {
+      position: sticky;
+      top: 6rem;
+    }
+  }
+  
+	&__image {
+    height: 100%;
+		object-fit: cover;
+    object-position: 30% 20%;
+	}
+}
