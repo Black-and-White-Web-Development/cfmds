@@ -27,7 +27,7 @@ body {
 }
 
 h1 {
-  @include fluid.typography(7, 9);
+  @include fluid.typography(8, 9);
   font-weight: var(--fw-bold);
 }
 
