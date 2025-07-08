@@ -1,11 +1,13 @@
 import type { ComponentType } from "react";
 
+import Banner from "@/components/blocks/Banner";
 import ChairsWelcome from "@/components/blocks/ChairsWelcome";
 import FrequentlyAskedQuestions from "@/components/blocks/FrequentlyAskedQuestions";
 import Text from "@/components/blocks/Text";
 import TextWithImage from "@/components/blocks/TextWithImage";
 
 import type {
+	BannerBlock,
 	Block,
 	ChairsWelcomeBlock,
 	FrequentlyAskedQuestionsBlock,
@@ -18,6 +20,7 @@ interface BlockRendererProps {
 }
 
 type ComponentMap = {
+	"blocks.banner": ComponentType<{ block: BannerBlock }>;
 	"blocks.chairs-welcome": ComponentType<{ block: ChairsWelcomeBlock }>;
 	"blocks.frequently-asked-questions": ComponentType<{ block: FrequentlyAskedQuestionsBlock }>;
 	"blocks.text": ComponentType<{ block: TextBlock }>;
@@ -25,6 +28,7 @@ type ComponentMap = {
 };
 
 const componentMap: ComponentMap = {
+	"blocks.banner": Banner,
 	"blocks.chairs-welcome": ChairsWelcome,
 	"blocks.frequently-asked-questions": FrequentlyAskedQuestions,
 	"blocks.text": Text,
