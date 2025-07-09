@@ -20,14 +20,8 @@
 
 	@include u.breakpoint(laptop) {
 		flex-direction: row;
-
-    &--left {
-      flex-direction: row;
-    }
-    &--right {
-      flex-direction: row-reverse;
-    }
-    & .chairs-welcome__text {
+    
+    & .chairs-welcome__content {
       flex-basis: 80%;
     }
     & .chairs-welcome__image-container {

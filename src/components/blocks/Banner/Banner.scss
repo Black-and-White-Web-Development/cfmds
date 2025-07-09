@@ -11,7 +11,7 @@
 
 	&,
 	&__image {
-		height: max(400px, 50vh);
+		height: max(300px, 50vh);
 	}
 
 	&__image {
@@ -27,13 +27,12 @@
 		background: linear-gradient(to right, var(--grey-a12), var(--grey-a8));
 
 		align-content: center;
-
-		color: white;
 	}
-
+  
 	&__content {
-		height: fit-content;
+    height: fit-content;
 		text-shadow: 2px 1px 0px black;
+    color: white;
 	}
 
 	&__heading {
