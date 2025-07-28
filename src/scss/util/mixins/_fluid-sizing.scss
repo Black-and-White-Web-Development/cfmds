@@ -1,18 +1,19 @@
 @use "sass:math";
+@use "sass:string";
 @use "@/scss/util/functions/unit-converters" as unit;
 @use "@/scss/util/functions/get-typographic-values" as font;
 
 @mixin _validate-inputs($min-val, $max-val, $min-vw, $max-vw, $property-name) {
-	@if unit($min-val) != "" {
+	@if math.unit($min-val) != "" {
 		@error "#{$property-name}() expects unitless numbers for #{$property-name} values, received '#{$min-val}' with unit '#{unit($min-val)}'. Provide numbers only, in px.";
 	}
-	@if unit($max-val) != "" {
+	@if math.unit($max-val) != "" {
 		@error "#{$property-name}() expects unitless numbers for #{$property-name} values, received '#{$max-val}' with unit '#{unit($max-val)}'. Provide numbers only, in px.";
 	}
-	@if unit($min-vw) != "" {
+	@if math.unit($min-vw) != "" {
 		@error "#{$property-name}() expects unitless numbers for min-vw, received '#{$min-vw}' with unit '#{unit($min-vw)}'. Provide numbers only, in px.";
 	}
-	@if unit($max-vw) != "" {
+	@if math.unit($max-vw) != "" {
 		@error "#{$property-name}() expects unitless numbers for max-vw, received '#{$max-vw}' with unit '#{unit($max-vw)}'. Provide numbers only, in px.";
 	}
 }
@@ -46,11 +47,11 @@
 	$calc-value: null;
 
 	@if $unit-type == "px" {
-		$calc-value: unquote(
+		$calc-value: string.unquote(
 			"calc(#{$min-converted - ($min-vw-converted * $factor)} + #{100vw * $factor})"
 		);
 	} @else {
-		$calc-value: unquote("#{$min-converted - ($min-vw-converted * $factor)} + #{100vw * $factor}");
+		$calc-value: string.unquote("#{$min-converted - ($min-vw-converted * $factor)} + #{100vw * $factor}");
 	}
 
 	#{$property}: $min-converted;

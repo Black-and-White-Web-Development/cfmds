@@ -1,21 +1,39 @@
 @use "@/scss/util" as u;
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.header--mobile,
+.nav-dialog__header, 
+.nav-dropdown__header {
+  --mobile-header-height: 80px;
+}
 
 .header {
-	position: fixed;
-	top: 0;
-	z-index: 1;
+	position: sticky;
+  top: 0;
+  z-index: 1;
 
-  justify-items: flex-end;
-  justify-content: flex-end;
-
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
 	width: 100%;
 
-	background-color: var(--background-2);
-	border-bottom-color: var(--border-1);
+	background-color: var(--grey-0);
 
-  @include u.breakpoint-down(phone-landscape) {
+  &__container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__dialog-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    &-label {
+      @include fluid.typography(3, 4);
+    }
+  }
+
+  &--mobile {
+    height: var(--mobile-header-height);
+    align-items: center;
   }
 }

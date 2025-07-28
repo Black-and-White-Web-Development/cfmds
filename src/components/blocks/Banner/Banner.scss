@@ -1,0 +1,54 @@
+@use "@/scss/util" as u;
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.banner {
+	grid-column: 1 / -1 !important;
+	margin-block-start: 0 !important;
+
+	position: relative;
+	background-color: var(--accent-11);
+	background: linear-gradient(30deg, var(--accent-12), var(--accent-9));
+
+	&,
+	&__image {
+		height: max(300px, 50vh);
+	}
+
+	&__image {
+		object-fit: cover;
+		object-position: bottom;
+	}
+
+	&__content-container {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to right, var(--grey-a12), var(--grey-a8));
+
+		align-content: center;
+	}
+  
+	&__content {
+    height: fit-content;
+		text-shadow: 2px 1px 0px black;
+    color: white;
+	}
+
+	&__heading {
+		margin-block-end: var(--space-4);
+	}
+
+	&__subheading {
+		display: block;
+
+		@include fluid.typography(5, 7);
+		font-family: var(--sans-serif);
+		font-weight: var(--fw-light);
+		text-wrap: balance;
+
+		@include u.breakpoint(tablet) {
+			max-width: 50%;
+		}
+	}
+}

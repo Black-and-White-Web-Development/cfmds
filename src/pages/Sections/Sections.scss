@@ -1,0 +1,14 @@
+@use "@/scss/util" as u;
+
+.classes {
+	margin-block-end: var(--space-7);
+
+	&__container {
+		display: grid;
+		gap: var(--space-4);
+
+		@include u.breakpoint(tablet) {
+			grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		}
+	}
+}
