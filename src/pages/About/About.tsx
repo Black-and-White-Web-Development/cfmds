@@ -1,11 +1,13 @@
-import { usePageData } from "@/hooks/usePageData";
+import { useStrapiData } from "@/hooks/useStrapiData";
 
 import BlockRenderer from "@/components/blocks/BlockRenderer";
+
+import type { Page } from "@/types/strapi";
 
 const PAGE_ID = "whtdogqzvhqis9qmjq8itsbd";
 
 const About = function () {
-	const { content, loading, error } = usePageData(PAGE_ID);
+	const { data: content, loading, error } = useStrapiData<Page>("pages", PAGE_ID);
 
 	if (loading) {
 		return <div className="loading">Loading page content...</div>;
