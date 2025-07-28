@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 
-import type { Page, StrapiResponse } from "@/types/strapi";
+import type { StrapiResponse } from "@/types/strapi";
 
-interface UsePageDataResult {
-	content: Page | null;
+interface UseStrapiDataResult<T> {
+	data: T | null;
 	loading: boolean;
 	error: string | null;
 }
 
-export const usePageData = (documentId: string): UsePageDataResult => {
-	const [content, setContent] = useState<Page | null>(null);
+export const useStrapiData = <T>(
+	endpoint: "pages" | "sections",
+	documentId?: string
+): UseStrapiDataResult<T> => {
+	const [data, setData] = useState<T | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
@@ -19,11 +22,12 @@ export const usePageData = (documentId: string): UsePageDataResult => {
 				setLoading(true);
 				setError(null);
 
-				const API_URL = `${import.meta.env.VITE_CMS_URL as string}/api/pages/${documentId}`;
+				const API_URL = `${import.meta.env.VITE_CMS_URL as string}/api/${endpoint}${
+					documentId ? `/${documentId}` : ""
+				}`;
 				const API_TOKEN = import.meta.env.VITE_CMS_API_TOKEN as string;
 
 				const response = await fetch(API_URL, {
-					method: "GET",
 					headers: {
 						Authorization: `Bearer ${API_TOKEN}`,
 						"Content-Type": "application/json",
@@ -34,18 +38,18 @@ export const usePageData = (documentId: string): UsePageDataResult => {
 					throw new Error(`HTTP error! status: ${response.status}`);
 				}
 
-				const data = (await response.json()) as StrapiResponse<Page>;
-				setContent(data.data);
-			} catch (error) {
-				console.error("Error fetching data:", error);
-				setError(error instanceof Error ? error.message : "An error occurred");
+				const json = (await response.json()) as StrapiResponse<T>;
+				setData(json.data);
+			} catch (err) {
+				console.error("Error fetching data:", err);
+				setError(err instanceof Error ? err.message : "An error occurred");
 			} finally {
 				setLoading(false);
 			}
 		};
 
 		void fetchData();
-	}, [documentId]);
+	}, [endpoint, documentId]);
 
-	return { content, loading, error };
+	return { data, loading, error };
 };

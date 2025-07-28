@@ -9,7 +9,7 @@ import "../Sections.scss";
 
 import bannerImg from "@/assets/sections/dance.webp";
 
-const SECTION_ID = "oxh93sex8xsf57n1yjvzt7ha";
+const SECTION_ID = "dej7fx55kw21ytwrt7w0wq1b";
 
 const formatDate = (dateStr: string) => {
 	return new Intl.DateTimeFormat("en-GB", {
@@ -21,7 +21,7 @@ const formatDate = (dateStr: string) => {
 		.replace(/^(\w+)(\s)/, "$1,$2");
 };
 
-const Strings = function () {
+const Orchestras = function () {
 	const { data: content, loading, error } = useStrapiData<Section>("sections", SECTION_ID);
 
 	const banner = (
@@ -96,4 +96,4 @@ const Strings = function () {
 	);
 };
 
-export default Strings;
+export default Orchestras;
