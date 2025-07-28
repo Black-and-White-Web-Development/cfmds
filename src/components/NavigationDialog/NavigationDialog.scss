@@ -43,9 +43,10 @@
       display: flex;
       justify-content: space-between;
     }
-
-    max-width: 100vw;
-    height: var(--mobile-header-height);
+    & {
+      max-width: 100vw;
+      height: var(--mobile-header-height);
+    }
 	}
 
   &__heading {

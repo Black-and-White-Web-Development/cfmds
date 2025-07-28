@@ -1,29 +1,31 @@
+@use "sass:list";
+@use "sass:map";
 @use "sass:math";
 @use "@/scss/tokens/typography" as typography;
 
-$max-step: length(typography.$typographic-scale);
+$max-step: list.length(typography.$typographic-scale);
 
 @function get-font-size($step) {
-	@if not map-has-key(typography.$typographic-scale, $step) {
+	@if not map.has-key(typography.$typographic-scale, $step) {
 		@error "Typography step '#{$step}' not found in $typographic-scale. Please use a step between 1 and #{$max-step}.";
 	} @else {
-		@return map-get(map-get(typography.$typographic-scale, $step), size);
+		@return map.get(map.get(typography.$typographic-scale, $step), size);
 	}
 }
 
 @function get-leading($step) {
-	@if not map-has-key(typography.$typographic-scale, $step) {
+	@if not map.has-key(typography.$typographic-scale, $step) {
 		@error "Typography step '#{$step}' not found in $typographic-scale. Please use a step between 1 and #{$max-step}.";
 	} @else {
-		@return map-get(map-get(typography.$typographic-scale, $step), leading);
+		@return map.get(map.get(typography.$typographic-scale, $step), leading);
 	}
 }
 
 @function get-tracking($step) {
-	@if not map-has-key(typography.$typographic-scale, $step) {
+	@if not map.has-key(typography.$typographic-scale, $step) {
 		@error "Typography step '#{$step}' not found in $typographic-scale. Please use a step between 1 and #{$max-step}.";
 	} @else {
-		@return map-get(map-get(typography.$typographic-scale, $step), tracking);
+		@return map.get(map.get(typography.$typographic-scale, $step), tracking);
 	}
 }
 
