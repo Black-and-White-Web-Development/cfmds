@@ -23,9 +23,12 @@ const Navigation = () => {
 				<NavDropdown label="Sections">
 					<NavSubItem to="/sections/dance">Dance</NavSubItem>
 					{/* prettier-ignore */}
-					<NavSubItem to="/sections/brass-orchestras-bands-percussion">Brass, Orchestras, Bands & Percussion</NavSubItem>
+					<NavSubItem to="/sections/brass">Brass</NavSubItem>
 					<NavSubItem to="/sections/choirs">Choirs</NavSubItem>
 					<NavSubItem to="/sections/classical-guitar">Classical Guitar</NavSubItem>
+					<NavSubItem to="/sections/orchestras-bands-percussion">
+						Orchestras, Bands & Percussion
+					</NavSubItem>
 					<NavSubItem to="/sections/organ">Organ</NavSubItem>
 					<NavSubItem to="/sections/pianoforte">Pianoforte</NavSubItem>
 					<NavSubItem to="/sections/singing">Singing</NavSubItem>
