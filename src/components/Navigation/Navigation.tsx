@@ -36,7 +36,7 @@ const Navigation = () => {
 					<NavSubItem to="/sections/strings">Strings</NavSubItem>
 					<NavSubItem to="/sections/woodwind">Woodwind</NavSubItem>
 				</NavDropdown>
-				<NavItem to="/news">News</NavItem>
+				{/* <NavItem to="/news">News</NavItem> */}
 				<NavItem to="/contact">Contact</NavItem>
 				<NavigationMenu.Indicator className="nav__indicator">
 					<div className="nav__indicator-arrow" />
