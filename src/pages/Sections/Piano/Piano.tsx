@@ -7,7 +7,7 @@ import type { Section } from "@/types/strapi";
 
 import "../Sections.scss";
 
-import bannerImg from "@/assets/sections/dance.webp";
+import bannerImg from "@/assets/sections/piano.webp";
 
 const SECTION_ID = "pv7zj3zag11sm67r37weyr7w";
 
