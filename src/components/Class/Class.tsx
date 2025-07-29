@@ -39,11 +39,13 @@ const Class = ({ cls }: ClassProps) => {
 					<div className="class__description-list-item">
 						<dt className="class__term">Group size</dt>
 						<dd className="class__details">
-							{cls.minGroupSize && cls.maxGroupSize
+							{cls.minGroupSize !== "0" &&
+							cls.maxGroupSize !== "0" &&
+							cls.minGroupSize !== cls.maxGroupSize
 								? `${cls.minGroupSize}-${cls.maxGroupSize} performers`
-								: cls.minGroupSize && cls.maxGroupSize
+								: cls.minGroupSize !== "0" && cls.maxGroupSize
 								? `${cls.minGroupSize} or more performers`
-								: cls.minGroupSize && cls.maxGroupSize
+								: cls.minGroupSize && cls.maxGroupSize !== "0"
 								? `${cls.maxGroupSize} or fewer performers`
 								: "No limits"}
 						</dd>
