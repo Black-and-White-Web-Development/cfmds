@@ -1,3 +1,4 @@
+export * from "./article.types";
 export * from "./common.types";
 export * from "./page.types";
 export * from "./section.types";
