@@ -1,0 +1,83 @@
+@use "@/scss/util" as u;
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.article {
+	padding: var(--space-5);
+	border-style: solid;
+	border-width: 1px;
+	border-color: var(--border-1);
+	border-radius: var(--radius-5);
+
+	background-color: var(--background-0);
+
+	&__header {
+		display: flex;
+		flex-direction: column-reverse;
+		gap: var(--space-3);
+
+		margin-block-end: var(--space-4);
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: var(--border-1);
+		padding-block-end: var(--space-4);
+	}
+
+	&__heading {
+		text-wrap: balance;
+	}
+
+	&__metadata {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+
+		@include u.breakpoint-down(tablet) {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: var(--space-3);
+		}
+	}
+
+	&__date {
+		@include fluid.typography(3, 4);
+		text-transform: uppercase;
+		text-wrap: nowrap;
+		color: var(--text-2);
+
+		@include u.breakpoint(laptop) {
+			margin-inline-end: var(--space-4);
+			border-right-style: solid;
+			border-right-width: 1px;
+			border-right-color: var(--border-1);
+			padding-inline-end: var(--space-4);
+		}
+	}
+
+	&__sections {
+		list-style: none;
+
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-1);
+	}
+
+	&__section {
+		padding: var(--space-1) var(--space-3);
+		max-width: fit-content;
+
+		@include fluid.typography(1, 2);
+		font-family: var(--sans-serif);
+		font-weight: var(--fw-medium);
+		text-transform: uppercase;
+
+		border-radius: var(--radius-2);
+
+		color: var(--accent-11);
+		background-color: var(--accent-3);
+
+		&--all {
+			background-color: hsl(50, 80%, 60%);
+			color: hsl(50, 40%, 15%);
+		}
+	}
+}

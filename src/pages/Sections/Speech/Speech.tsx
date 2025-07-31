@@ -8,18 +8,9 @@ import type { Section } from "@/types/strapi";
 import "../Sections.scss";
 
 import bannerImg from "@/assets/sections/speech-and-drama.webp";
+import { formatDate } from "@/util/formateDate";
 
 const SECTION_ID = "cadnlasxohdo0rvm9v09ime6";
-
-const formatDate = (dateStr: string) => {
-	return new Intl.DateTimeFormat("en-GB", {
-		weekday: "long",
-		day: "numeric",
-		month: "long",
-	})
-		.format(new Date(dateStr))
-		.replace(/^(\w+)(\s)/, "$1,$2");
-};
 
 const Speech = function () {
 	const { data: content, loading, error } = useStrapiData<Section>("sections", SECTION_ID);

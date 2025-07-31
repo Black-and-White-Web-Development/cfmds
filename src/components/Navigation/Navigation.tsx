@@ -22,13 +22,11 @@ const Navigation = () => {
 				<NavItem to="/about">About</NavItem>
 				<NavDropdown label="Sections">
 					<NavSubItem to="/sections/dance">Dance</NavSubItem>
-					{/* prettier-ignore */}
 					<NavSubItem to="/sections/brass">Brass</NavSubItem>
 					<NavSubItem to="/sections/choirs">Choirs</NavSubItem>
 					<NavSubItem to="/sections/classical-guitar">Classical Guitar</NavSubItem>
-					<NavSubItem to="/sections/orchestras-bands-percussion">
-						Orchestras, Bands & Percussion
-					</NavSubItem>
+					{/* prettier-ignore */}
+					<NavSubItem to="/sections/orchestras-bands-percussion">Orchestras, Bands & Percussion</NavSubItem>
 					<NavSubItem to="/sections/organ">Organ</NavSubItem>
 					<NavSubItem to="/sections/pianoforte">Pianoforte</NavSubItem>
 					<NavSubItem to="/sections/singing">Singing</NavSubItem>
@@ -36,7 +34,7 @@ const Navigation = () => {
 					<NavSubItem to="/sections/strings">Strings</NavSubItem>
 					<NavSubItem to="/sections/woodwind">Woodwind</NavSubItem>
 				</NavDropdown>
-				{/* <NavItem to="/news">News</NavItem> */}
+				<NavItem to="/news">News</NavItem>
 				<NavItem to="/contact">Contact</NavItem>
 				<NavigationMenu.Indicator className="nav__indicator">
 					<div className="nav__indicator-arrow" />

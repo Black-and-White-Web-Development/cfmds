@@ -8,18 +8,9 @@ import type { Section } from "@/types/strapi";
 import "../Sections.scss";
 
 import bannerImg from "@/assets/sections/woodwind.webp";
+import { formatDate } from "@/util/formateDate";
 
 const SECTION_ID = "l25a915jdxjiz2123yz6c9ji";
-
-const formatDate = (dateStr: string) => {
-	return new Intl.DateTimeFormat("en-GB", {
-		weekday: "long",
-		day: "numeric",
-		month: "long",
-	})
-		.format(new Date(dateStr))
-		.replace(/^(\w+)(\s)/, "$1,$2");
-};
 
 const Woodwind = function () {
 	const { data: content, loading, error } = useStrapiData<Section>("sections", SECTION_ID);
