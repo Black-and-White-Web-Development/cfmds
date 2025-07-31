@@ -11,3 +11,16 @@ export interface StrapiImage {
 	width: number;
 	height: number;
 }
+
+export interface StrapiDocument {
+	id: number;
+	documentId: string;
+	name: string;
+	hash: string;
+	ext: string;
+	mime: string;
+	size: number;
+	url: string;
+	previewUrl: string;
+	provider: string;
+}

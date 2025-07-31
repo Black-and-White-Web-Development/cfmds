@@ -8,18 +8,9 @@ import type { Section } from "@/types/strapi";
 import "../Sections.scss";
 
 import bannerImg from "@/assets/sections/organ.webp";
+import { formatDate } from "@/util/formateDate";
 
 const SECTION_ID = "wu5hsrp7p1hvabc3pewcbxe7";
-
-const formatDate = (dateStr: string) => {
-	return new Intl.DateTimeFormat("en-GB", {
-		weekday: "long",
-		day: "numeric",
-		month: "long",
-	})
-		.format(new Date(dateStr))
-		.replace(/^(\w+)(\s)/, "$1,$2");
-};
 
 const Organ = function () {
 	const { data: content, loading, error } = useStrapiData<Section>("sections", SECTION_ID);
