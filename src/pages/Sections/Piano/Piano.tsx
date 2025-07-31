@@ -8,18 +8,9 @@ import type { Section } from "@/types/strapi";
 import "../Sections.scss";
 
 import bannerImg from "@/assets/sections/piano.webp";
+import { formatDate } from "@/util/formateDate";
 
 const SECTION_ID = "pv7zj3zag11sm67r37weyr7w";
-
-const formatDate = (dateStr: string) => {
-	return new Intl.DateTimeFormat("en-GB", {
-		weekday: "long",
-		day: "numeric",
-		month: "long",
-	})
-		.format(new Date(dateStr))
-		.replace(/^(\w+)(\s)/, "$1,$2");
-};
 
 const Piano = function () {
 	const { data: content, loading, error } = useStrapiData<Section>("sections", SECTION_ID);
