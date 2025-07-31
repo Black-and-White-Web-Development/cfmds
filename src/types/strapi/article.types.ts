@@ -10,7 +10,7 @@ export interface Article {
 	updatedAt: string;
 	publishedAt: string;
 	isPinned: boolean;
-	section: {
+	sections: {
 		id: number;
 		documentId: string;
 		title: string;
@@ -21,12 +21,4 @@ export interface Article {
 		publishedAt: string;
 	}[];
 	attachments: StrapiDocument;
-	meta: {
-		pagination: {
-			page: number;
-			pageSize: number;
-			pageCount: number;
-			total: number;
-		};
-	};
 }
