@@ -1,3 +1,10 @@
+import { faCakeCandles } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import { faPeopleGroup } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import { faTicket } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import { faTimer } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import { faTrophy } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import type { Class as ClassType } from "@/types/class.types";
 
 import "./Class.scss";
@@ -27,6 +34,7 @@ const Class = ({ cls }: ClassProps) => {
 			<dl className="class__description-list">
 				{(cls.minAge !== "0" || cls.maxAge !== "0") && (
 					<div className="class__description-list-item">
+						<FontAwesomeIcon className="class__icon" icon={faCakeCandles} />
 						<dt className="class__term">Ages</dt>
 						<dd className="class__details">
 							{cls.minAge !== "0" && cls.maxAge !== "0" && `${cls.minAge}-${cls.maxAge} years`}
@@ -37,6 +45,7 @@ const Class = ({ cls }: ClassProps) => {
 				)}
 				{(cls.minGroupSize || cls.maxGroupSize) && (
 					<div className="class__description-list-item">
+						<FontAwesomeIcon className="class__icon" icon={faPeopleGroup} />
 						<dt className="class__term">Group size</dt>
 						<dd className="class__details">
 							{cls.minGroupSize !== "0" &&
@@ -53,24 +62,28 @@ const Class = ({ cls }: ClassProps) => {
 				)}
 				{cls.maxDuration !== "0" && (
 					<div className="class__description-list-item">
+						<FontAwesomeIcon className="class__icon" icon={faTimer} />
 						<dt className="class__term">Time limit</dt>
 						<dd className="class__details">{cls.maxDuration} minutes</dd>
 					</div>
 				)}
 				{cls.award && (
 					<div className="class__description-list-item">
+						<FontAwesomeIcon className="class__icon" icon={faTrophy} />
 						<dt className="class__term">Award</dt>
 						<dd className="class__details">{cls.award}</dd>
 					</div>
 				)}
 				{cls.fee !== "0" && (
 					<div className="class__description-list-item">
+						<FontAwesomeIcon className="class__icon" icon={faTicket} transform={{ rotate: 45 }} />
 						<dt className="class__term">Entry fee</dt>
 						<dd className="class__details">{formatMoney(cls.fee)}</dd>
 					</div>
 				)}
 				{cls.groupFee !== "0" && (
 					<div className="class__description-list-item">
+						<FontAwesomeIcon className="class__icon" icon={faTicket} />
 						<dt className="class__term">Entry fee</dt>
 						<dd className="class__details">
 							{formatMoney(cls.groupFee)}
