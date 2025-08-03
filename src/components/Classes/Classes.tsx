@@ -1,4 +1,9 @@
-import { useState, useMemo } from "react";
+import { useMemo, useRef, useState } from "react";
+
+import { faMagnifyingGlass } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Label } from "radix-ui";
+import { Toolbar } from "radix-ui";
 
 import Class from "@/components/Class";
 
@@ -12,6 +17,7 @@ interface ClassesProps {
 
 const Classes = ({ classes }: ClassesProps) => {
 	const [searchTerm, setSearchTerm] = useState("");
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	const filteredClasses = useMemo(() => {
 		return classes.filter(cls => {
@@ -22,19 +28,38 @@ const Classes = ({ classes }: ClassesProps) => {
 		});
 	}, [searchTerm, classes]);
 
+	const handleIconClick = () => {
+		inputRef.current?.focus();
+	};
+
 	return (
 		<section className="classes">
 			<h2>Classes</h2>
-			<div className="classes__tools">
-				<input
-					type="text"
-					placeholder="Search"
-					value={searchTerm}
-					onChange={e => setSearchTerm(e.target.value.toLowerCase())}
-					className="classes__search-input"
-				/>
-			</div>
+			<Toolbar.Root className="classes__tools tools">
+				<div className="tools__search tool">
+					<Label.Root className="tool__label" htmlFor="classes-search">
+						Search
+					</Label.Root>
+					<div className="tool__input-container tool__input-container--search">
+						<FontAwesomeIcon
+							className="tool__icon"
+							icon={faMagnifyingGlass}
+							onClick={handleIconClick}
+						/>
+						<input
+							id="classes-search"
+							className="tool__input tool__input--search"
+							ref={inputRef}
+							type="text"
+							placeholder=""
+							value={searchTerm}
+							onChange={e => setSearchTerm(e.target.value.toLowerCase())}
+						/>
+					</div>
+				</div>
+			</Toolbar.Root>
 			<div className="classes__container">
+				{filteredClasses.length === 0 && <p>No classes found.</p>}
 				{filteredClasses.map(cls => (
 					<Class key={cls.number} cls={cls} />
 				))}

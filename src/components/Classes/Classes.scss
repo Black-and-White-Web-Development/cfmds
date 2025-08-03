@@ -11,4 +11,58 @@
 			grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 		}
 	}
+
+  &__tools {
+    margin-block-start: var(--space-6);
+    margin-block-end: var(--space-5);
+    padding: var(--space-3);
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--border-1);
+    border-radius: var(--radius-5);
+
+    background-color: var(--background-2);
+  }
+}
+
+.tool {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+
+  &__label {
+    text-transform: uppercase;
+    color: var(--text-2);
+
+    &::after {
+      content: ":";
+    }
+  }
+
+  &__input-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    &--search {
+      padding: var(--space-2) var(--space-3);
+      border-style: solid;
+      border-width: 1px;
+      border-color: var(--border-1);
+      border-radius: var(--radius-3);
+      
+      background-color: var(--background-0);
+    }
+  }
+  
+  &__input {
+    border: none;
+    
+    &--search {
+      &:focus-visible {
+        outline: none;
+        box-shadow: 0 1.5px 0 var(--solid-accent-2);
+      }
+    }
+  }
 }
