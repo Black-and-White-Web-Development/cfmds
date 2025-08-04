@@ -52,6 +52,8 @@ const Class = ({ cls }: ClassProps) => {
 							cls.maxGroupSize !== "0" &&
 							cls.minGroupSize !== cls.maxGroupSize
 								? `${cls.minGroupSize}-${cls.maxGroupSize} performers`
+								: cls.minGroupSize === cls.maxGroupSize
+								? `${cls.minGroupSize} performers`
 								: cls.minGroupSize !== "0" && cls.maxGroupSize
 								? `${cls.minGroupSize} or more performers`
 								: cls.minGroupSize && cls.maxGroupSize !== "0"
