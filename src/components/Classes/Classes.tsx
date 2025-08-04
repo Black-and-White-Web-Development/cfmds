@@ -1,20 +1,24 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 
-import { faList } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
-import { faGrid2 } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
-import { faMagnifyingGlass } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import {
+	faList,
+	faGrid2,
+	faFaceDisappointed,
+} from "@awesome.me/kit-3e90a9788c/icons/classic/light";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
-import { Label } from "radix-ui";
 import { ToggleGroup } from "radix-ui";
 import { Toolbar } from "radix-ui";
 
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 import Class from "@/components/Class";
+import Search from "@/components/Search";
 
 import type { Class as ClassType } from "@/types/class.types";
+
+import { filterClasses } from "@/util/filterClasses";
 
 import "./Classes.scss";
 
@@ -27,48 +31,29 @@ const Classes = ({ classes }: ClassesProps) => {
 	const [view, setView] = useState("grid");
 
 	const isTablet = useBreakpoint();
-	const inputRef = useRef<HTMLInputElement>(null);
 
 	const filteredClasses = useMemo(() => {
-		return classes.filter(cls => {
-			const numberMatch = cls.name.toLowerCase().includes(searchTerm);
-			const nameMatch = cls.number.toLowerCase().includes(searchTerm);
+		return filterClasses(classes, searchTerm);
+	}, [classes, searchTerm]);
 
-			return numberMatch || nameMatch;
-		});
-	}, [searchTerm, classes]);
-
-	const handleIconClick = () => {
-		inputRef.current?.focus();
-	};
+	const searchPlaceholder = isTablet
+		? "Search for a class"
+		: "Search for a class by name, number, age, school year, time limit or award";
 
 	return (
 		<section className="classes">
 			<h2>Classes</h2>
-			<Toolbar.Root className="classes__tools tools">
-				<div className="tools__search tool">
-					<Label.Root className="tool__label" htmlFor="classes-search">
-						Search
-					</Label.Root>
-					<div className="tool__input-container tool__input-container--search">
-						<FontAwesomeIcon
-							className="tool__icon"
-							icon={faMagnifyingGlass}
-							onClick={handleIconClick}
-						/>
-						<input
-							id="classes-search"
-							className="tool__input tool__input--search"
-							ref={inputRef}
-							type="text"
-							placeholder=""
-							value={searchTerm}
-							onChange={e => setSearchTerm(e.target.value.toLowerCase())}
-						/>
-					</div>
-				</div>
+			<Toolbar.Root className="classes__toolbar toolbar">
+				<Search
+					id="classes-search"
+					value={searchTerm}
+					onChange={setSearchTerm}
+					placeholder={searchPlaceholder}
+					label="Search"
+					className="toolbar__search"
+				/>
 				{!isTablet && (
-					<div className="tools__display tool">
+					<div className="toolbar__display tool">
 						<ToggleGroup.Root
 							className="tool__toggle-group toggle-group"
 							type="single"
@@ -101,7 +86,12 @@ const Classes = ({ classes }: ClassesProps) => {
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.2 }}
 				>
-					{filteredClasses.length === 0 && <p>No classes found.</p>}
+					{filteredClasses.length === 0 && (
+						<div className="classes__no-results">
+							<p className="classes__no-results-message">No classes match that search term...</p>
+							<FontAwesomeIcon className="classes__no-results-icon" icon={faFaceDisappointed} />
+						</div>
+					)}
 					{filteredClasses.map(cls => (
 						<Class key={cls.number} cls={cls} />
 					))}

@@ -94,7 +94,7 @@ const Class = ({ cls }: ClassProps) => {
 					</div>
 				)}
 			</dl>
-			<p>{cls.description}</p>
+			<p className="class__description">{cls.description}</p>
 		</article>
 	);
 };
