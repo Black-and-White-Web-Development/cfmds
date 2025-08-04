@@ -6,24 +6,38 @@
 	&__container {
 		display: grid;
 		gap: var(--space-4);
+    
+		@include u.breakpoint(phone-landscape) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-		@include u.breakpoint(tablet) {
-			grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-		}
+      &--list {
+        grid-template-columns: auto;
+
+        & .class__description-list {
+          flex-direction: row;
+          flex-wrap: wrap;
+          column-gap: var(--space-6);
+        }
+      }
+    }
 	}
+}
 
-  &__tools {
-    margin-block-start: var(--space-6);
-    margin-block-end: var(--space-5);
-    padding: var(--space-3);
+.tools {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-5);
 
-    border-style: solid;
-    border-width: 1px;
-    border-color: var(--border-1);
-    border-radius: var(--radius-5);
+  margin-block-start: var(--space-6);
+  margin-block-end: var(--space-5);
+  padding: var(--space-3);
 
-    background-color: var(--background-2);
-  }
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--border-1);
+  border-radius: var(--radius-5);
+
+  background-color: var(--background-2);
 }
 
 .tool {
@@ -63,6 +77,48 @@
         outline: none;
         box-shadow: 0 1.5px 0 var(--solid-accent-2);
       }
+    }
+  }
+}
+
+.toggle-group {
+  display: flex;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+
+    padding: var(--space-2) var(--space-3);
+
+    border-top: solid 1px var(--border-1);
+    border-bottom: solid 1px var(--border-1);
+    border-left: solid 1px var(--border-1);
+    
+    background-color: var(--background-0);
+
+    transition-property: color, background-color;
+    transition-duration: 600ms;
+    
+    &:first-child {
+      border-radius: var(--radius-3) 0 0 var(--radius-3);
+    }
+    &:last-child {
+      border-right: solid 1px var(--border-1);
+      border-radius: 0 var(--radius-3) var(--radius-3) 0;
+    }
+    &:hover {
+      background-color: var(--accent-3);
+      transition-duration: 400ms;
+    }
+    &[data-state="on"] {
+      color: var(--text-accent-1);
+      background-color: var(--interactive-accent-3);
+      transition-duration: 200ms;
+    }
+    &:focus-visible {
+      position: relative;
+      outline: solid 2px var(--text-accent-2);
     }
   }
 }

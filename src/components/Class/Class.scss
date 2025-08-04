@@ -87,8 +87,11 @@
   }
 
 	&__term {
+    align-self: flex-end;
+
 		text-transform: uppercase;
     text-wrap: nowrap;
+
 		color: var(--text-2);
 
 		&::after {
@@ -97,6 +100,7 @@
 	}
 
 	&__details {
+    align-self: flex-start;
     text-wrap: balance;
 		color: var(--accent-12);
 	}
