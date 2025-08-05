@@ -1,3 +1,14 @@
+@keyframes enterFromBottom {
+	from {
+		opacity: 0;
+		transform: translateY(20%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 @keyframes enterFromRight {
 	from {
 		opacity: 0;
@@ -80,4 +91,13 @@
 	to {
 		opacity: 0;
 	}
+}
+
+@keyframes scale {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.1;
+  }
 }

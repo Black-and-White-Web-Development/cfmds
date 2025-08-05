@@ -17,7 +17,9 @@
 	}
 
 	&__sub-link {
-		display: block;
+		display: flex;
+    align-items: center;
+    gap: 1ch;
 
 		&--active {
       color: var(--accent-11);
@@ -28,7 +30,6 @@
       padding: var(--space-2) var(--space-4);
 
       @include fluid.typography(3, 4);
-      font-weight: var(--fw-medium);
       text-wrap: nowrap;
 
       background-color: var(--interactive-1);
@@ -56,6 +57,10 @@
       }
     }
 	}
+
+  &__sub-link-icon {
+    opacity: 0.75;
+  }
 }
 
 .nav--mobile .nav {

@@ -96,6 +96,15 @@ ul {
   font-family: var(--serif)
 }
 
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  @include fluid.typography(3, 4);
+}
+
 small {
   @include fluid.typography(1, 2);
 }
