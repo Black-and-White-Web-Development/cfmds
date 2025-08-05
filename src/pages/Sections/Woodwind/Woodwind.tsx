@@ -1,7 +1,7 @@
 import { useStrapiData } from "@/hooks/useStrapiData";
 
 import BlockRenderer from "@/components/blocks/BlockRenderer";
-import Class from "@/components/Class";
+import Classes from "@/components/Classes";
 
 import type { Section } from "@/types/strapi";
 
@@ -69,20 +69,7 @@ const Woodwind = function () {
 		<>
 			{banner}
 			{content.blocks && <BlockRenderer blocks={content.blocks} />}
-			{content && (
-				<section className="section">
-					{content.classes && (
-						<section className="classes">
-							<h2>{content.title} classes</h2>
-							<div className="classes__container">
-								{content.classes.map(cls => (
-									<Class key={cls.number} cls={cls} />
-								))}
-							</div>
-						</section>
-					)}
-				</section>
-			)}
+			{content.classes && <Classes classes={content.classes} />}
 		</>
 	);
 };
