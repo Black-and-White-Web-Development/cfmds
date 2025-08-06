@@ -15,6 +15,16 @@
 
 	background-color: var(--background-0);
 
+  transition-property: box-shadow border-color transform;
+  transition-duration: 1600ms;
+  
+  &:hover {
+    transition-duration: 400ms;
+    border-color: var(--accent-12);
+    box-shadow: var(--shadow-3);
+  }
+
+
 	&__header {
 		display: flex;
 		align-items: center;
