@@ -1,16 +1,7 @@
 import type { Class as ClassType } from "@/types/class.types";
 
 export const filterClasses = (classes: ClassType[], search: string) => {
-	const normalizedSearch = search.toLowerCase().trim();
-
-	const matchPartialPhrase = (phrase: string) => phrase.toLowerCase().startsWith(normalizedSearch);
-
-	const ageSearch = (() => {
-		const match = normalizedSearch.match(/^(\d+)(\s*years?)?$/);
-		if (!match) return null;
-		const num = parseInt(match[1]);
-		return isNaN(num) ? null : num;
-	})();
+	const normalisedSearch: string = search.toLowerCase().trim();
 
 	return classes.filter(cls => {
 		const fields = [
@@ -22,18 +13,41 @@ export const filterClasses = (classes: ClassType[], search: string) => {
 			`${cls.maxGroupSize} performers`,
 		].map(f => f.toLowerCase());
 
-		const ageMatches = [`${cls.minAge} years`, `${cls.maxAge} years`];
-		const schoolYearMatches = [`year ${cls.minSchoolYear}`, `year ${cls.maxSchoolYear}`];
+		const ageMatches =
+			cls.minAge !== undefined && cls.maxAge !== undefined
+				? [`${cls.minAge}`, `${cls.maxAge}`].some(age => age === normalisedSearch) ||
+				  (parseInt(normalisedSearch) >= Number(cls.minAge) &&
+						parseInt(normalisedSearch) <= Number(cls.maxAge))
+				: cls.minAge !== undefined
+				? `${cls.minAge}` === normalisedSearch
+				: cls.maxAge !== undefined
+				? `${cls.maxAge}` === normalisedSearch
+				: false;
 
-		const partialMatches = [...ageMatches, ...schoolYearMatches];
+		const yearMatch = normalisedSearch.match(/^year\s+(\d+)$/);
+		const searchYear = yearMatch ? parseInt(yearMatch[1]) : parseInt(normalisedSearch);
 
-		const ageOver18Match =
-			ageSearch && ageSearch >= 18 && (Number(cls.minAge) >= 18 || Number(cls.maxAge) >= 18);
+		const schoolYearMatches =
+			cls.minSchoolYear !== undefined && cls.maxSchoolYear !== undefined
+				? [`${cls.minSchoolYear}`, `${cls.maxSchoolYear}`].some(
+						year => year === normalisedSearch
+				  ) ||
+				  [`year ${cls.minSchoolYear}`, `year ${cls.maxSchoolYear}`].some(
+						phrase => phrase === normalisedSearch
+				  ) ||
+				  (!isNaN(searchYear) &&
+						searchYear >= Number(cls.minSchoolYear) &&
+						searchYear <= Number(cls.maxSchoolYear))
+				: cls.minSchoolYear !== undefined
+				? `${cls.minSchoolYear}` === normalisedSearch ||
+				  `year ${cls.minSchoolYear}` === normalisedSearch
+				: cls.maxSchoolYear !== undefined
+				? `${cls.maxSchoolYear}` === normalisedSearch ||
+				  `year ${cls.maxSchoolYear}` === normalisedSearch
+				: false;
 
 		return (
-			fields.some(field => field.includes(normalizedSearch)) ||
-			partialMatches.some(phrase => matchPartialPhrase(phrase)) ||
-			ageOver18Match
+			fields.some(field => field.includes(normalisedSearch)) || ageMatches || schoolYearMatches
 		);
 	});
 };
