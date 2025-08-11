@@ -5,6 +5,8 @@ import Article from "@/components/Article";
 import type { NewsBlock } from "@/types/strapi";
 import type { Article as ArticleType } from "@/types/strapi";
 
+import "./News.scss";
+
 interface NewsProps {
 	block: NewsBlock;
 }
@@ -27,7 +29,7 @@ const News = ({ block }: NewsProps) => {
 	return (
 		<section className="block news">
 			<h2 className="news__heading">Latest articles</h2>
-			<div className="articles-contaner">{articles}</div>
+			<div className="news__articles">{articles}</div>
 		</section>
 	);
 };
