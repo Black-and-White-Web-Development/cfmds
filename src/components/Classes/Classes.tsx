@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
 	faList,
@@ -29,12 +29,27 @@ interface ClassesProps {
 const Classes = ({ classes }: ClassesProps) => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [view, setView] = useState("grid");
+	const [currentPage, setCurrentPage] = useState(1);
+
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [searchTerm]);
 
 	const isTablet = useBreakpoint();
+
+	const itemsPerPage = 12;
+	const startIndex = (currentPage - 1) * itemsPerPage;
+	const endIndex = startIndex + itemsPerPage;
 
 	const filteredClasses = useMemo(() => {
 		return filterClasses(classes, searchTerm);
 	}, [classes, searchTerm]);
+
+	const paginatedClasses = useMemo(() => {
+		return filteredClasses.slice(startIndex, endIndex);
+	}, [filteredClasses, startIndex, endIndex]);
+
+	const totalPages = Math.ceil(filteredClasses.length / itemsPerPage);
 
 	const searchPlaceholder = isTablet
 		? "Search for a class"
@@ -75,28 +90,84 @@ const Classes = ({ classes }: ClassesProps) => {
 				)}
 			</Toolbar.Root>
 			<AnimatePresence mode="wait">
-				<motion.div
-					key={view}
-					className={clsx("classes__container", {
-						"classes__container--grid": view === "grid",
-						"classes__container--list": view === "list" && !isTablet,
+				<motion.ul
+					key={`${view}-${currentPage}`}
+					className={clsx("classes__list", {
+						"classes__list--grid": view === "grid",
+						"classes__list--list": view === "list" && !isTablet,
 					})}
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					transition={{ duration: 0.2 }}
+					initial="hidden"
+					animate="visible"
+					exit="hidden"
+					variants={{
+						hidden: { opacity: 0, y: 10 },
+						visible: {
+							opacity: 1,
+							y: 0,
+							transition: {
+								staggerChildren: 0.05,
+							},
+						},
+					}}
 				>
-					{filteredClasses.length === 0 && (
+					{paginatedClasses.length === 0 && (
 						<div className="classes__no-results">
 							<p className="classes__no-results-message">No classes match that search term...</p>
 							<FontAwesomeIcon className="classes__no-results-icon" icon={faFaceDisappointed} />
 						</div>
 					)}
-					{filteredClasses.map(cls => (
-						<Class key={cls.number} cls={cls} />
+					{paginatedClasses.map(cls => (
+						<motion.li
+							className="classes__list-item"
+							key={cls.number}
+							variants={{
+								hidden: { opacity: 0, y: 10 },
+								visible: { opacity: 1, y: 0 },
+							}}
+						>
+							<Class cls={cls} />
+						</motion.li>
 					))}
-				</motion.div>
+				</motion.ul>
 			</AnimatePresence>
+			{totalPages > 1 && (
+				<div className="classes__pagination-controls pagination-controls">
+					<button
+						type="button"
+						className={clsx("pagination-controls__control", {
+							"pagination-controls__control--inactive": currentPage === 1,
+						})}
+						onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+						disabled={currentPage === 1}
+					>
+						Previous
+					</button>
+					<div className="pagination-controls__page-numbers">
+						{Array.from({ length: totalPages }, (_, i) => (
+							<button
+								type="button"
+								key={i}
+								onClick={() => setCurrentPage(i + 1)}
+								className={clsx("pagination-controls__page-number", {
+									"pagination-controls__page-number--active": currentPage === i + 1,
+								})}
+							>
+								{i + 1}
+							</button>
+						))}
+					</div>
+					<button
+						type="button"
+						className={clsx("pagination-controls__control", {
+							"pagination-controls__control--inactive": currentPage === totalPages,
+						})}
+						onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+						disabled={currentPage === totalPages}
+					>
+						Next
+					</button>
+				</div>
+			)}
 		</section>
 	);
 };
