@@ -96,13 +96,21 @@
   }
 }
 
+.pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  margin-block-start: var(--space-6);
+}
+
 .pagination-controls {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: var(--space-2);
 
-  margin-block-start: var(--space-6);
   width: 100%;
 
   &__page-numbers {
@@ -143,8 +151,8 @@
     
     &--inactive {
       transition-duration: 1200ms;
-      pointer-events: none;
-      opacity: 0  ;
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 
