@@ -6,7 +6,7 @@
 	gap: var(--space-3);
 
 	padding: var(--space-3);
-	// max-width: 300px;
+  height: 100%;
   
   border-style: solid;
 	border-width: 1px;
@@ -34,6 +34,7 @@
 	&__heading {
 		margin-inline-end: var(--space-4);
 		@include fluid.typography(4, 5);
+    font-family: var(--sans-serif);
 		line-height: 1;
 		text-wrap: balance;
 	}
@@ -46,6 +47,7 @@
 		border-color: var(--accent-12);
 		border-radius: var(--radius-2);
 
+    font-family: var(--sans-serif);
 		font-weight: var(--fw-normal);
 
 		color: var(--text-accent-1);
