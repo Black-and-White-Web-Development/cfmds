@@ -145,6 +145,9 @@
   }
 
   &__control {
+    min-width: 10ch;
+    text-align: center;
+
     text-transform: uppercase;
 
     transition-property: box-shadow, border-color, opacity;

@@ -38,6 +38,7 @@ const Classes = ({ classes }: ClassesProps) => {
 	}, [searchTerm]);
 
 	const isTablet = useBreakpoint();
+	const isMobile = useBreakpoint(519.98);
 
 	const filteredClasses = useMemo(() => {
 		return filterClasses(classes, searchTerm);
@@ -146,18 +147,27 @@ const Classes = ({ classes }: ClassesProps) => {
 							Previous
 						</button>
 						<div className="pagination-controls__page-numbers">
-							{Array.from({ length: totalPages }, (_, i) => (
+							{isMobile ? (
 								<button
 									type="button"
-									key={i}
-									onClick={() => setCurrentPage(i + 1)}
-									className={clsx("pagination-controls__page-number", {
-										"pagination-controls__page-number--active": currentPage === i + 1,
-									})}
+									className="pagination-controls__page-number pagination-controls__page-number--active"
 								>
-									{i + 1}
+									{`Page ${currentPage} of ${totalPages}`}
 								</button>
-							))}
+							) : (
+								Array.from({ length: totalPages }, (_, i) => (
+									<button
+										type="button"
+										key={i}
+										onClick={() => setCurrentPage(i + 1)}
+										className={clsx("pagination-controls__page-number", {
+											"pagination-controls__page-number--active": currentPage === i + 1,
+										})}
+									>
+										{i + 1}
+									</button>
+								))
+							)}
 						</div>
 						<button
 							type="button"
