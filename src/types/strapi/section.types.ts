@@ -1,5 +1,6 @@
-import type { Class } from "../class.types";
-import type { Block } from "./blocks";
+import type { Adjudicator } from "@/types/adjudicator.types";
+import type { Class } from "@/types/class.types";
+import type { Block } from "@/types/strapi/blocks";
 import type { StrapiImage } from "@/types/strapi/common.types";
 import type { BlocksContent } from "@strapi/blocks-react-renderer";
 
@@ -15,12 +16,7 @@ export interface Section {
 		bio: BlocksContent;
 		avatar: StrapiImage;
 	};
-	adjudicator: {
-		name: string;
-		postNominals: string;
-		bio: BlocksContent;
-		avatar: StrapiImage;
-	};
+	adjudicator: Adjudicator;
 	dates: {
 		id: number;
 		startDate: string;

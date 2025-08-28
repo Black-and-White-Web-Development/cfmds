@@ -7,7 +7,7 @@ export interface StrapiImage {
 	id: number;
 	documentId: string;
 	url: string;
-	alternativeText: string | null;
+	alternativeText: string | undefined;
 	width: number;
 	height: number;
 }
