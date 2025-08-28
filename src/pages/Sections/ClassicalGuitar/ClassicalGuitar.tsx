@@ -1,5 +1,6 @@
 import { useStrapiData } from "@/hooks/useStrapiData";
 
+import Adjudicator from "@/components/Adjudicator";
 import BlockRenderer from "@/components/blocks/BlockRenderer";
 import Classes from "@/components/Classes";
 
@@ -70,6 +71,7 @@ const ClassicalGuitar = function () {
 			{banner}
 			{content.blocks && <BlockRenderer blocks={content.blocks} />}
 			{content.classes && <Classes classes={content.classes} />}
+			{content.adjudicator && <Adjudicator adjudicator={content.adjudicator} />}
 		</>
 	);
 };
