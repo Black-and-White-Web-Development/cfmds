@@ -3,6 +3,7 @@ import { useStrapiData } from "@/hooks/useStrapiData";
 import Adjudicator from "@/components/Adjudicator";
 import BlockRenderer from "@/components/blocks/BlockRenderer";
 import Classes from "@/components/Classes";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 import type { Section } from "@/types/strapi";
 
@@ -43,7 +44,7 @@ const Woodwind = function () {
 		return (
 			<>
 				{banner}
-				<div className="fb-col-wrapper loading">Loading section data...</div>;
+				<LoadingSpinner message="Loading classes from Play&Perform" />
 			</>
 		);
 	}
