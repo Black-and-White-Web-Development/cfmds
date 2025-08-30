@@ -1,6 +1,6 @@
 import { useStrapiData } from "@/hooks/useStrapiData";
 
-import Article from "@/components/Article";
+import Headline from "@/components/Headline";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 import type { NewsBlock } from "@/types/strapi";
@@ -31,7 +31,7 @@ const News = ({ block }: NewsProps) => {
 						.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
 						.map(article => (
 							<li key={article.id} className="news__list-item">
-								<Article article={article} />
+								<Headline article={article} />
 							</li>
 						))
 				)}
