@@ -2,6 +2,7 @@ export interface Class {
 	number: string;
 	name: string;
 	description: string;
+	setTest: string;
 	subsection: string;
 	minAge: string;
 	maxAge: string;

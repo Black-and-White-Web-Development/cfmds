@@ -71,7 +71,7 @@ const Speech = function () {
 		<>
 			{banner}
 			{content.blocks && <BlockRenderer blocks={content.blocks} />}
-			{content.classes && <Classes classes={content.classes} />}
+			{content.classes && <Classes classes={content.classes} setTests={content.setTests} />}
 			{content.adjudicator && <Adjudicator adjudicator={content.adjudicator} />}
 		</>
 	);
