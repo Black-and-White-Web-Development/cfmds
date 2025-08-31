@@ -5,6 +5,7 @@ import BlockRenderer from "@/components/blocks/BlockRenderer";
 import Classes from "@/components/Classes";
 import ErrorMessage from "@/components/ErrorMessage";
 import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
+import NoContent from "@/components/NoContent";
 
 import type { Section } from "@/types/strapi";
 
@@ -63,7 +64,7 @@ const Piano = function () {
 		return (
 			<>
 				{banner}
-				<div className="fb-col-wrapper error">This page section no content.</div>;
+				return <NoContent message="This page section has no content." />;
 			</>
 		);
 	}

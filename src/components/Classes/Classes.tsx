@@ -1,10 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import {
-	faFaceDisappointed,
-	faGrid2,
-	faList,
-} from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import { faGrid2, faList } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
@@ -14,6 +10,7 @@ import { Toolbar } from "radix-ui";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 import Class from "@/components/Class";
+import NoContent from "@/components/NoContent";
 import Search from "@/components/Search";
 import Select from "@/components/Select";
 
@@ -115,12 +112,7 @@ const Classes = ({ classes, setTests }: ClassesProps) => {
 						},
 					}}
 				>
-					{paginatedClasses.length === 0 && (
-						<div className="classes__no-results">
-							<p className="classes__no-results-message">No classes match that search term...</p>
-							<FontAwesomeIcon className="classes__no-results-icon" icon={faFaceDisappointed} />
-						</div>
-					)}
+					{paginatedClasses.length === 0 && <NoContent message="No classes found." />}
 					{paginatedClasses.map(cls => {
 						const setTest = setTests?.find(st => st.classNumber === cls.number);
 
@@ -139,71 +131,75 @@ const Classes = ({ classes, setTests }: ClassesProps) => {
 					})}
 				</motion.ul>
 			</AnimatePresence>
-			<div className="pagination">
-				{totalPages > 1 && (
-					<div className="classes__pagination-controls pagination-controls">
-						<button
-							type="button"
-							className={clsx("pagination-controls__control", {
-								"pagination-controls__control--inactive": currentPage === 1,
-							})}
-							onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
-							disabled={currentPage === 1}
-						>
-							Previous
-						</button>
-						<div className="pagination-controls__page-numbers">
-							{isMobile ? (
-								<button
-									type="button"
-									className="pagination-controls__page-number pagination-controls__page-number--active"
-								>
-									{`Page ${currentPage} of ${totalPages}`}
-								</button>
-							) : (
-								Array.from({ length: totalPages }, (_, i) => (
+			{paginatedClasses.length > 0 && (
+				<div className="pagination">
+					{totalPages > 1 && (
+						<div className="classes__pagination-controls pagination-controls">
+							<button
+								type="button"
+								className={clsx("pagination-controls__control", {
+									"pagination-controls__control--inactive": currentPage === 1,
+								})}
+								onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+								disabled={currentPage === 1}
+							>
+								Previous
+							</button>
+							<div className="pagination-controls__page-numbers">
+								{isMobile ? (
 									<button
 										type="button"
-										key={i}
-										onClick={() => setCurrentPage(i + 1)}
-										className={clsx("pagination-controls__page-number", {
-											"pagination-controls__page-number--active": currentPage === i + 1,
-										})}
+										className="pagination-controls__page-number pagination-controls__page-number--active"
 									>
-										{i + 1}
+										{`Page ${currentPage} of ${totalPages}`}
 									</button>
-								))
-							)}
+								) : (
+									Array.from({ length: totalPages }, (_, i) => (
+										<button
+											type="button"
+											key={i}
+											onClick={() => setCurrentPage(i + 1)}
+											className={clsx("pagination-controls__page-number", {
+												"pagination-controls__page-number--active": currentPage === i + 1,
+											})}
+										>
+											{i + 1}
+										</button>
+									))
+								)}
+							</div>
+							<button
+								type="button"
+								className={clsx("pagination-controls__control", {
+									"pagination-controls__control--inactive": currentPage === totalPages,
+								})}
+								onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+								disabled={currentPage === totalPages}
+							>
+								Next
+							</button>
 						</div>
-						<button
-							type="button"
-							className={clsx("pagination-controls__control", {
-								"pagination-controls__control--inactive": currentPage === totalPages,
-							})}
-							onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
-							disabled={currentPage === totalPages}
-						>
-							Next
-						</button>
+					)}
+					<div>
+						<Select
+							id="results-per-page"
+							label="Results per page"
+							value={String(itemsPerPage)}
+							onValueChange={v =>
+								v === "All" ? setItemsPerPage("All") : setItemsPerPage(Number(v))
+							}
+							options={[
+								{ value: "12", label: "12" },
+								{ value: "24", label: "24" },
+								{ value: "36", label: "36" },
+								{ value: "48", label: "48" },
+								{ value: "60", label: "60" },
+								{ value: "All", label: "All" },
+							]}
+						/>
 					</div>
-				)}
-				<div>
-					<Select
-						id="results-per-page"
-						label="Results per page"
-						value={String(itemsPerPage)}
-						onValueChange={v => (v === "All" ? setItemsPerPage("All") : setItemsPerPage(Number(v)))}
-						options={[
-							{ value: "12", label: "12" },
-							{ value: "24", label: "24" },
-							{ value: "36", label: "36" },
-							{ value: "48", label: "48" },
-							{ value: "60", label: "60" },
-							{ value: "All", label: "All" },
-						]}
-					/>
 				</div>
-			</div>
+			)}
 		</section>
 	);
 };

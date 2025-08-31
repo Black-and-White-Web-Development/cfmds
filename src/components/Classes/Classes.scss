@@ -23,27 +23,6 @@
       }
     }
 	}
-
-  &__no-results {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-2);
-  }
-  &__no-results-message {
-    font-family: var(--sans-serif);
-    color: var(--solid-2);
-    animation: enterFromBottom 600ms, fadeIn 200ms;
-    animation-fill-mode: backwards;
-  }
-  &__no-results-icon {
-    @include fluid.typography(5, 6);
-    color: var(--solid-2);
-    color: var(--border-3);
-    animation: fadeIn 800ms 200ms;
-    animation-fill-mode: backwards;
-  }
 }
 
 .toolbar {

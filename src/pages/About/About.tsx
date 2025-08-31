@@ -3,6 +3,7 @@ import { useStrapiData } from "@/hooks/useStrapiData";
 import BlockRenderer from "@/components/blocks/BlockRenderer";
 import ErrorMessage from "@/components/ErrorMessage";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import NoContent from "@/components/NoContent";
 
 import type { Page } from "@/types/strapi";
 
@@ -20,7 +21,7 @@ const About = function () {
 	}
 
 	if (!content) {
-		return <div className="error">This page has no content.</div>;
+		return <NoContent message="This page has no content." />;
 	}
 
 	return content.blocks && <BlockRenderer blocks={content.blocks} />;
