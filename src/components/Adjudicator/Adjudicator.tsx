@@ -12,7 +12,7 @@ const Adjudicator = ({ adjudicator }: AdjudicatorProps) => {
 	return (
 		<section className="adjudicator">
 			<h2>About our adjudicator</h2>
-			<div className="adjudicator__container">
+			<article className="adjudicator__container">
 				<header className="adjudicator__header">
 					<h3 className="adjudicator__heading">
 						{adjudicator.name}
@@ -21,13 +21,12 @@ const Adjudicator = ({ adjudicator }: AdjudicatorProps) => {
 					<img
 						className="adjudicator__portrait"
 						src={adjudicator.avatar.url}
-						alt={adjudicator.avatar.alternativeText}
-						width={adjudicator.avatar.width}
+						alt={`Portrait of ${adjudicator.name}`}
 						height={adjudicator.avatar.height}
 					/>
 				</header>
 				<RichTextRenderer content={adjudicator.bio} />
-			</div>
+			</article>
 		</section>
 	);
 };
