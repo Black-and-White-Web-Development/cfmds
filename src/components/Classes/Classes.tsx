@@ -18,6 +18,7 @@ import Search from "@/components/Search";
 import Select from "@/components/Select";
 
 import type { Class as ClassType } from "@/types/class.types";
+import type { SetTest as SetTestType } from "@/types/set-test.types";
 
 import { filterClasses } from "@/util/filterClasses";
 
@@ -25,9 +26,10 @@ import "./Classes.scss";
 
 interface ClassesProps {
 	classes: ClassType[];
+	setTests?: SetTestType[];
 }
 
-const Classes = ({ classes }: ClassesProps) => {
+const Classes = ({ classes, setTests }: ClassesProps) => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [view, setView] = useState("grid");
 	const [currentPage, setCurrentPage] = useState(1);
@@ -119,18 +121,22 @@ const Classes = ({ classes }: ClassesProps) => {
 							<FontAwesomeIcon className="classes__no-results-icon" icon={faFaceDisappointed} />
 						</div>
 					)}
-					{paginatedClasses.map(cls => (
-						<motion.li
-							className="classes__list-item"
-							key={cls.number}
-							variants={{
-								hidden: { opacity: 0, y: 10 },
-								visible: { opacity: 1, y: 0 },
-							}}
-						>
-							<Class cls={cls} />
-						</motion.li>
-					))}
+					{paginatedClasses.map(cls => {
+						const setTest = setTests?.find(st => st.classNumber === cls.number);
+
+						return (
+							<motion.li
+								className="classes__list-item"
+								key={cls.number}
+								variants={{
+									hidden: { opacity: 0, y: 10 },
+									visible: { opacity: 1, y: 0 },
+								}}
+							>
+								<Class cls={cls} setTest={setTest} />
+							</motion.li>
+						);
+					})}
 				</motion.ul>
 			</AnimatePresence>
 			<div className="pagination">

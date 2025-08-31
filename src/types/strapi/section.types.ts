@@ -2,6 +2,7 @@ import type { Adjudicator } from "@/types/adjudicator.types";
 import type { Class } from "@/types/class.types";
 import type { Block } from "@/types/strapi/blocks";
 import type { StrapiImage } from "@/types/strapi/common.types";
+import type { StrapiDocument } from "@/types/strapi/common.types";
 import type { BlocksContent } from "@strapi/blocks-react-renderer";
 
 export interface Section {
@@ -21,6 +22,11 @@ export interface Section {
 		id: number;
 		startDate: string;
 		endDate?: string;
+	}[];
+	setTests: {
+		id: number;
+		classNumber: string;
+		test: StrapiDocument;
 	}[];
 	classes: Class[];
 	createdAt: string;
