@@ -1,6 +1,7 @@
 import { useStrapiData } from "@/hooks/useStrapiData";
 
 import BlockRenderer from "@/components/blocks/BlockRenderer";
+import ErrorMessage from "@/components/ErrorMessage";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 import type { Page } from "@/types/strapi";
@@ -15,7 +16,7 @@ const About = function () {
 	}
 
 	if (error) {
-		return <div className="error">Error fetching page content: {error}</div>;
+		return <ErrorMessage message="Error fetching page content." error={error} />;
 	}
 
 	if (!content) {
