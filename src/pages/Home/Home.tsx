@@ -1,6 +1,7 @@
 import { useStrapiData } from "@/hooks/useStrapiData";
 
 import BlockRenderer from "@/components/blocks/BlockRenderer";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 import type { Page } from "@/types/strapi";
 
@@ -12,7 +13,7 @@ const Home = function () {
 	const { data: content, loading, error } = useStrapiData<Page>("pages", PAGE_ID);
 
 	if (loading) {
-		return <div className="loading">Loading page content...</div>;
+		return <LoadingSpinner />;
 	}
 
 	if (error) {

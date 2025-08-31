@@ -3,7 +3,7 @@ import { useStrapiData } from "@/hooks/useStrapiData";
 import Adjudicator from "@/components/Adjudicator";
 import BlockRenderer from "@/components/blocks/BlockRenderer";
 import Classes from "@/components/Classes";
-import LoadingSpinner from "@/components/LoadingSpinner";
+import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
 
 import type { Section } from "@/types/strapi";
 

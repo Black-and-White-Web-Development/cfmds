@@ -4,7 +4,7 @@ interface LoadingSpinnerProps {
 	message?: string;
 }
 
-const LoadingSpinner = ({ message = "Loading" }: LoadingSpinnerProps) => {
+const LoadingSpinner = ({ message = "" }: LoadingSpinnerProps) => {
 	return <p className="loading-spinner">{message}</p>;
 };
 
