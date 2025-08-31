@@ -7,7 +7,7 @@ import { useStrapiData } from "@/hooks/useStrapiData";
 
 import RichTextRenderer from "@/components/blocks/RichTextRenderer";
 import Headline from "@/components/Headline";
-import LoadingSpinner from "@/components/LoadingSpinner";
+import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
 
 import type { Article as ArticleType } from "@/types/strapi/article.types";
 

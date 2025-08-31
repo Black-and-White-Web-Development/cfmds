@@ -34,6 +34,7 @@ const routes: RouteObject[] = [
 			// { path: "enter", element: <Enter /> },
 			{ path: "volunteers", element: <Volunteers /> },
 			{ path: "rules", element: <Rules /> },
+			{ path: "*", element: <PageNotFound /> },
 		],
 	},
 ];

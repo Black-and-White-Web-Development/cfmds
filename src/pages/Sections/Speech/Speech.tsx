@@ -3,7 +3,9 @@ import { useStrapiData } from "@/hooks/useStrapiData";
 import Adjudicator from "@/components/Adjudicator";
 import BlockRenderer from "@/components/blocks/BlockRenderer";
 import Classes from "@/components/Classes";
-import LoadingSpinner from "@/components/LoadingSpinner";
+import ErrorMessage from "@/components/ErrorMessage";
+import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
+import NoContent from "@/components/NoContent";
 
 import type { Section } from "@/types/strapi";
 
@@ -53,7 +55,7 @@ const Speech = function () {
 		return (
 			<>
 				{banner}
-				<div className="fb-col-wrapper error">Error fetching section content: {error}</div>;
+				<ErrorMessage message="Error fetching page content." error={error} />;
 			</>
 		);
 	}
@@ -62,7 +64,7 @@ const Speech = function () {
 		return (
 			<>
 				{banner}
-				<div className="fb-col-wrapper error">This page section no content.</div>;
+				return <NoContent message="This page section has no content." />;
 			</>
 		);
 	}

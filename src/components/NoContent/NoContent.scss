@@ -1,0 +1,41 @@
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.no-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	margin-block: var(--space-7);
+	margin-inline: auto;
+
+	&__icon {
+		margin-block-end: var(--space-4);
+
+		@include fluid.typography(5, 6);
+		color: var(--solid-1);
+		animation: fadeIn 800ms 200ms;
+		animation-fill-mode: backwards;
+	}
+
+	&__message,
+	&__error {
+		font-family: var(--sans-serif);
+		text-align: center;
+
+		animation: enterFromBottom 600ms, fadeIn 200ms;
+		animation-fill-mode: backwards;
+	}
+
+	&__message {
+		@include fluid.typography(2, 3);
+		color: var(--text-2);
+	}
+
+	&__error {
+		@include fluid.typography(1, 2);
+		font-weight: var(--fw-light);
+		text-transform: uppercase;
+		color: var(--text-2);
+	}
+}
