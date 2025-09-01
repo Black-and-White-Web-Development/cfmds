@@ -6,6 +6,7 @@ import FrequentlyAskedQuestions from "@/components/blocks/FrequentlyAskedQuestio
 import Hero from "@/components/blocks/Hero";
 import ImageCarousel from "@/components/blocks/ImageCarousel";
 import News from "@/components/blocks/News";
+import QuickLinks from "@/components/blocks/QuickLinks";
 import Text from "@/components/blocks/Text";
 import TextWithImage from "@/components/blocks/TextWithImage";
 
@@ -17,6 +18,7 @@ import type {
 	HeroBlock,
 	ImageCarouselBlock,
 	NewsBlock,
+	QuickLinksBlock,
 	TextWithImageBlock,
 	TextBlock,
 } from "@/types/strapi";
@@ -32,6 +34,7 @@ type ComponentMap = {
 	"blocks.hero": ComponentType<{ block: HeroBlock }>;
 	"blocks.image-carousel": ComponentType<{ block: ImageCarouselBlock }>;
 	"blocks.news": ComponentType<{ block: NewsBlock }>;
+	"blocks.section-quick-links": ComponentType<{ block: QuickLinksBlock }>;
 	"blocks.text": ComponentType<{ block: TextBlock }>;
 	"blocks.text-with-image": ComponentType<{ block: TextWithImageBlock }>;
 };
@@ -43,6 +46,7 @@ const componentMap: ComponentMap = {
 	"blocks.hero": Hero,
 	"blocks.image-carousel": ImageCarousel,
 	"blocks.news": News,
+	"blocks.section-quick-links": QuickLinks,
 	"blocks.text": Text,
 	"blocks.text-with-image": TextWithImage,
 };
