@@ -11,12 +11,16 @@ interface TextWithImageProps {
 
 const TextWithImage = ({ block }: TextWithImageProps) => {
   const isLandscape = block.image.width > block.image.height;
+  const isPortrait = block.image.width < block.image.height;
+	const isSquare = block.image.width === block.image.height;
+
 	const sectionClass = clsx("text-with-image", {
 		"text-with-image--left": block.imagePosition.toLowerCase() === "left",
 		"text-with-image--right": block.imagePosition.toLowerCase() !== "left",
 		"text-with-image--full-bleed": block.isFullBleed,
 		"text-with-image--landscape": isLandscape,
-		"text-with-image--portrait": !isLandscape,
+		"text-with-image--portrait": isPortrait,
+		"text-with-image--square": isSquare,
 	});
 
 	return (

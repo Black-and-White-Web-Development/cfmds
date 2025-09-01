@@ -1,0 +1,31 @@
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.loading-spinner {
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: center;
+	align-items: center;
+	gap: var(--space-4);
+
+	margin-block: var(--space-7);
+	margin-inline: auto;
+
+	@include fluid.typography(1, 2);
+	font-family: var(--sans-serif);
+	text-transform: uppercase;
+	color: var(--text-2);
+
+	&::after {
+		content: "";
+
+		width: var(--space-7);
+		height: var(--space-7);
+
+		border-style: dashed;
+		border-width: 2px;
+		border-color: var(--border-3);
+		border-radius: 50%;
+
+		animation: spin 1200ms linear infinite;
+	}
+}

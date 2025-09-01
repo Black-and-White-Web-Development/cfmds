@@ -10,20 +10,24 @@ interface ChairsWelcomeProps {
 
 const ChairsWelcome = ({ block }: ChairsWelcomeProps) => {
 	return (
-		<section className="block chairs-welcome">
-			<div className="chairs-welcome__image-container">
-				<img
-					className="chairs-welcome__image"
-					src={block.avatar.url}
-					alt={block.avatar.alternativeText || "Chair's photo"}
-					width={block.avatar.width}
-					height={block.avatar.height}
-				/>
-			</div>
-			<div className="chairs-welcome__content">
-				<h2>{block.heading}</h2>
+		<section className="chairs-welcome block">
+			<h2 className="chairs-welcome__heading">{block.heading}</h2>
+			<article className="chairs-welcome__container">
+				<header className="chairs-welcome__header">
+					<h3 className="chairs-welcome__heading">
+						Alan Rodger
+						<span className="chairs-welcome__post-nominals">ALCM, LLCM (TD), MISM</span>
+					</h3>
+					<img
+						className="chairs-welcome__portrait"
+						src={block.avatar.url}
+						alt={block.avatar.alternativeText || "Chair's photo"}
+						width={block.avatar.width}
+						height={block.avatar.height}
+					/>
+				</header>
 				<RichTextRenderer content={block.body} />
-			</div>
+			</article>
 		</section>
 	);
 };

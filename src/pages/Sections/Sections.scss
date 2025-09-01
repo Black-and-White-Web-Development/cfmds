@@ -1,0 +1,89 @@
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.section-leader {
+  margin-block: var(--space-5);
+  padding-block-start: var(--space-5);
+
+  max-width: max(50%, 300px);
+
+  border-top: solid 1px white;
+  
+  &__heading {
+    margin-block-end: var(--space-2);
+    
+    @include fluid.typography(4, 6);
+    font-weight: var(--fw-medium);
+  }
+
+  &__name {
+    display: flex;
+    gap: 1ch;
+  }
+  
+  &__name,
+  &__post-nominals,
+  &__contact {
+    @include fluid.typography(4, 6);
+    font-family: var(--sans-serif);
+    font-weight: var(--fw-light);
+  }
+}
+
+.adjudicator-summary {
+  margin-block: var(--space-5);
+  padding-block-start: var(--space-5);
+
+  max-width: max(50%, 300px);
+
+  border-top: solid 1px white;
+  
+  &__heading {
+    margin-block-end: var(--space-2);
+    
+    @include fluid.typography(4, 6);
+    font-weight: var(--fw-medium);
+  }
+
+  &__name {
+    display: flex;
+    gap: 1ch;
+  }
+  
+  &__name,
+  &__post-nominals {
+    @include fluid.typography(4, 6);
+    font-family: var(--sans-serif);
+    font-weight: var(--fw-light);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    max-width: fit-content;
+
+    margin-block-start: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border: solid 1px white;
+    border-radius: var(--radius-1);
+
+    @include fluid.typography(2, 3);
+    text-transform: uppercase;
+    color: white;
+
+    backdrop-filter: blur(4px);
+
+    transition-property: color, background-color, text-shadow;
+    transition-duration: 400ms;
+
+    &:hover {
+      background-color: white;
+      color: black;
+      text-shadow: none;
+    }
+
+    &:hover .adjudicator-summary__link-icon {
+      animation: translateDown 100ms 300ms ease-in-out 4 alternate;
+    }
+  }
+}

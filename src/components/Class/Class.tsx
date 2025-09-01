@@ -3,14 +3,17 @@ import { faPeopleGroup } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
 import { faTicket } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
 import { faTimer } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
 import { faTrophy } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import { faChevronDown } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import type { Class as ClassType } from "@/types/class.types";
+import type { SetTest as SetTestType } from "@/types/set-test.types";
 
 import "./Class.scss";
 
 interface ClassProps {
 	cls: ClassType;
+	setTest?: SetTestType;
 }
 
 function formatMoney(value: string | number): string {
@@ -24,7 +27,7 @@ function formatMoney(value: string | number): string {
 	}).format(number);
 }
 
-const Class = ({ cls }: ClassProps) => {
+const Class = ({ cls, setTest }: ClassProps) => {
 	return (
 		<article key={cls.number} className="class">
 			<header className="class__header">
@@ -94,7 +97,22 @@ const Class = ({ cls }: ClassProps) => {
 					</div>
 				)}
 			</dl>
-			<p className="class__description">{cls.description}</p>
+			{cls.description && <p className="class__description">{cls.description}</p>}
+			{setTest && (
+				<p className="class__description">
+					<strong>Set work:</strong> {cls.setTest.replace(/&quot;/g, '"')}.
+					<a
+						className="class__set-test-download"
+						href={setTest.test.url}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<span className="class__set-test-download-label">Download</span>
+						<span className="class__set-test-download-size">{`(${setTest.test.size} kb)`}</span>
+						<FontAwesomeIcon className="class__set-test-download-icon" icon={faChevronDown} />
+					</a>
+				</p>
+			)}
 		</article>
 	);
 };

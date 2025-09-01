@@ -1,0 +1,14 @@
+.news {
+  &__list {
+    list-style: none;
+
+    display: flex;
+    gap: var(--space-4);
+
+    overflow-x: scroll;
+  }
+
+  &__list-item {
+    flex: 1;
+  }
+}

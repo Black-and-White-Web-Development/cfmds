@@ -1,51 +1,65 @@
 @use "@/scss/util" as u;
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
 
 .chairs-welcome {
-  position: relative;
-	display: flex;
-	gap: var(--space-4);
+	margin-block-end: var(--space-9);
 
-	flex-direction: column-reverse;
-
-	display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-start;
-	gap: var(--space-7);
-
-  @include u.breakpoint-down(tablet) {
-    &__image-container {
-      max-height: max(300px, 50vw);
-    }
-  }
-
-	@include u.breakpoint(laptop) {
-		flex-direction: row;
+	&__container {  
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
     
-    & .chairs-welcome__content {
-      flex-basis: 80%;
-    }
-    & .chairs-welcome__image-container {
-      flex-basis: max(40%, 600px);
+		padding: var(--space-4);
+    
+		border-style: solid;
+		border-width: 1px;
+		border-color: var(--border-1);
+		border-radius: var(--radius-5);
+    
+		background-color: var(--background-0);
+    
+    @include u.breakpoint(tablet) {
+      position: relative;
+      flex-direction: row;
+      gap: var(--space-6);
     }
 	}
 
-  &__image-container { 
-    width: 100%;
-
-    border-radius: var(--radius-4);
-		overflow: hidden;
-
-    flex-basis: max(40%, 600px);
-
-    @include u.breakpoint(laptop) {
+	&__header {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: flex-end;
+    
+    @include u.breakpoint(tablet) {
       position: sticky;
-      top: 6rem;
+      top: calc(var(--space-9) + var(--space-4));
     }
-  }
-  
-	&__image {
-    height: 100%;
+	}
+
+	&__heading {
+		display: block;
+	}
+
+	&__post-nominals {
+		display: block;
+
+		@include fluid.typography(3, 4);
+		font-weight: var(--fw-light);
+	}
+
+	&__portrait {
+		margin-block-end: var(--space-4);
+		border-radius: var(--radius-3);
+		aspect-ratio: 1 / 1;
 		object-fit: cover;
-    object-position: 30% 20%;
+    
+    @include u.breakpoint(tablet) {
+      width: 200px;
+    }
+	}
+
+	& .text__paragraph:first-child {
+		margin-block-start: 0;
 	}
 }

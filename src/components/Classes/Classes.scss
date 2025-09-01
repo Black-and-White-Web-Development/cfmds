@@ -4,9 +4,10 @@
 .classes {
 	margin-block-end: var(--space-7);
 
-	&__container {
+	&__list {
 		display: grid;
 		gap: var(--space-4);
+    list-style: none;
     
 		@include u.breakpoint(phone-landscape) {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -22,27 +23,6 @@
       }
     }
 	}
-
-  &__no-results {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-2);
-  }
-  &__no-results-message {
-    font-family: var(--sans-serif);
-    color: var(--solid-2);
-    animation: enterFromBottom 600ms, fadeIn 200ms;
-    animation-fill-mode: backwards;
-  }
-  &__no-results-icon {
-    @include fluid.typography(5, 6);
-    color: var(--solid-2);
-    color: var(--border-3);
-    animation: fadeIn 800ms 200ms;
-    animation-fill-mode: backwards;
-  }
 }
 
 .toolbar {
@@ -91,6 +71,82 @@
     &:focus-visible {
       position: relative;
       outline: solid 2px var(--text-accent-2);
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  margin-block-start: var(--space-6);
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+
+  width: 100%;
+
+  &__page-numbers {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  &__control,
+  &__page-number {
+    display: block;
+
+    padding: var(--space-1) var(--space-3);
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--border-2);
+    border-radius: var(--radius-1);
+
+    @include fluid.typography(1, 2);
+    font-weight: var(--fw-medium);
+
+    color: var(--text-2);
+    background-color: var(--background-2);
+
+    transition-duration: 800ms;
+
+    &:hover {
+      border-color: var(--accent-12);
+      box-shadow: var(--shadow-2);
+      transition-duration: 400ms;
+    }
+  }
+
+  &__control {
+    min-width: 10ch;
+    text-align: center;
+
+    text-transform: uppercase;
+
+    transition-property: box-shadow, border-color, opacity;
+    
+    &--inactive {
+      transition-duration: 1200ms;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &__page-number {
+    transition-property: box-shadow, color, border-color, background-color;
+    transition-duration: 800ms;
+    
+    &--active {
+      color: var(--text-accent-1);
+      border-color: var(--accent-12);
+      background-color: var(--background-0);
+      transition-duration: 400ms;
     }
   }
 }

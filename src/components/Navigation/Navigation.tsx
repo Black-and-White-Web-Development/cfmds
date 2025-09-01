@@ -36,37 +36,48 @@ const Navigation = () => {
 				<NavItem to="/about">About</NavItem>
 				<NavDropdown label="Sections">
 					<NavSubItem to="/sections/dance">
-						<FontAwesomeIcon className="nav__sub-link-icon" icon={faShoe} /> Dance
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faShoe} />
+						Dance
 					</NavSubItem>
 					<NavSubItem to="/sections/brass">
-						<FontAwesomeIcon className="nav__sub-link-icon" icon={faTrumpet} /> Brass
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faTrumpet} />
+						Brass
 					</NavSubItem>
 					<NavSubItem to="/sections/choirs">
-						<FontAwesomeIcon className="nav__sub-link-icon" icon={faPeopleLine} /> Choirs
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faPeopleLine} />
+						Choirs
 					</NavSubItem>
 					<NavSubItem to="/sections/classical-guitar">
 						<FontAwesomeIcon className="nav__sub-link-icon" icon={faGuitar} />
 						Classical Guitar
 					</NavSubItem>
-					{/* prettier-ignore */}
-					<NavSubItem to="/sections/orchestras-bands-percussion"><FontAwesomeIcon className="nav__sub-link-icon" icon={faBookOpenLines} /> Orchestras, Bands & Percussion</NavSubItem>
+					<NavSubItem to="/sections/orchestras-bands-and-percussion">
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faBookOpenLines} />
+						Orchestras, Bands & Percussion
+					</NavSubItem>
 					<NavSubItem to="/sections/organ">
-						<FontAwesomeIcon className="nav__sub-link-icon" icon={faPianoKeyboard} /> Organ
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faPianoKeyboard} />
+						Organ
 					</NavSubItem>
 					<NavSubItem to="/sections/pianoforte">
-						<FontAwesomeIcon className="nav__sub-link-icon" icon={faPiano} /> Pianoforte
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faPiano} />
+						Pianoforte
 					</NavSubItem>
 					<NavSubItem to="/sections/singing">
-						<FontAwesomeIcon className="nav__sub-link-icon" icon={faMicrophoneStand} /> Singing
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faMicrophoneStand} />
+						Singing
 					</NavSubItem>
 					<NavSubItem to="/sections/speech-and-drama">
-						<FontAwesomeIcon className="nav__sub-link-icon" icon={faMasksTheatre} /> Speech & Drama
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faMasksTheatre} />
+						Speech & Drama
 					</NavSubItem>
 					<NavSubItem to="/sections/strings">
-						<FontAwesomeIcon className="nav__sub-link-icon" icon={faViolin} /> Strings
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faViolin} />
+						Strings
 					</NavSubItem>
 					<NavSubItem to="/sections/woodwind">
-						<FontAwesomeIcon className="nav__sub-link-icon" icon={faClarinet} /> Woodwind
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faClarinet} />
+						Woodwind
 					</NavSubItem>
 				</NavDropdown>
 				<NavItem to="/news">News</NavItem>

@@ -1,9 +1,12 @@
 import { useStrapiData } from "@/hooks/useStrapiData";
 
-import Article from "@/components/Article";
+import Headline from "@/components/Headline";
+import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
 
 import type { NewsBlock } from "@/types/strapi";
 import type { Article as ArticleType } from "@/types/strapi";
+
+import "./News.scss";
 
 interface NewsProps {
 	block: NewsBlock;
@@ -12,22 +15,27 @@ interface NewsProps {
 const News = ({ block }: NewsProps) => {
 	const { data: content, loading, error } = useStrapiData<ArticleType[]>("articles");
 
-	const articles = loading ? (
-		<div className="loading">Loading articles...</div>
-	) : error ? (
-		<div className="error">Error fetching articles: {error}</div>
-	) : !content ? (
-		<div className="error">No articles available.</div>
-	) : (
-		content
-			.slice(0, block.maxArticlesNumber)
-			.map(article => <Article key={article.id} article={article} />)
-	);
-
 	return (
 		<section className="block news">
 			<h2 className="news__heading">Latest articles</h2>
-			<div className="articles-contaner">{articles}</div>
+			<ul className="news__list">
+				{loading ? (
+					<LoadingSpinner message="Loading articles" />
+				) : error ? (
+					<div className="error">Error fetching articles: {error}</div>
+				) : !content ? (
+					<div className="error">No articles available.</div>
+				) : (
+					content
+						.slice(0, block.maxArticlesNumber)
+						.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+						.map(article => (
+							<li key={article.id} className="news__list-item">
+								<Headline article={article} />
+							</li>
+						))
+				)}
+			</ul>
 		</section>
 	);
 };

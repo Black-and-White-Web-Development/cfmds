@@ -1,0 +1,69 @@
+@use "@/scss/util" as u;
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.adjudicator {
+	margin-block-end: var(--space-9);
+
+	&__container {  
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    
+		padding: var(--space-4);
+    
+		border-style: solid;
+		border-width: 1px;
+		border-color: var(--border-1);
+		border-radius: var(--radius-5);
+    
+		background-color: var(--background-0);
+    
+    @include u.breakpoint(tablet) {
+      position: relative;
+      flex-direction: row;
+      gap: var(--space-6);
+    }
+	}
+
+	&__header {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: flex-end;
+    
+    @include u.breakpoint(tablet) {
+      position: sticky;
+      top: calc(var(--space-9) + var(--space-4));
+    }
+	}
+
+	&__heading {
+		display: block;
+
+		@include fluid.typography(6, 7);
+		font-weight: var(--fw-normal);
+		text-transform: none;
+	}
+
+	&__post-nominals {
+		display: block;
+
+		@include fluid.typography(3, 4);
+		font-weight: var(--fw-light);
+	}
+
+	&__portrait {
+		margin-block-end: var(--space-4);
+		border-radius: var(--radius-3);
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+    
+    @include u.breakpoint(tablet) {
+      width: 200px;
+    }
+	}
+
+	& .text__paragraph:first-child {
+		margin-block-start: 0;
+	}
+}
