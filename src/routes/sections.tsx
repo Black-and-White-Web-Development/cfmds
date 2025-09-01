@@ -21,7 +21,7 @@ const routes: RouteObject = {
 		{ path: "choirs", element: <Choirs /> },
 		{ path: "classical-guitar", element: <ClassicalGuitar /> },
 		{ path: "dance", element: <Dance /> },
-		{ path: "orchestras-bands-percussion", element: <Orchestras /> },
+		{ path: "orchestras-bands-and-percussion", element: <Orchestras /> },
 		{ path: "organ", element: <Organ /> },
 		{ path: "pianoforte", element: <Piano /> },
 		{ path: "singing", element: <Singing /> },
