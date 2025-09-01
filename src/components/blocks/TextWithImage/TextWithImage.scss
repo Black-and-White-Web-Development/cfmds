@@ -24,18 +24,26 @@
 
     &--landscape {
       & .text-with-image__text {
-        flex-basis: 80%;
+        flex-basis: 33%;
       }
       & .text-with-image__image-container {
-        flex-basis: 100%;
+        flex-basis: 66%;
       }
     }
     &--portrait {
       & .text-with-image__text {
-        flex-basis: 80%;
+        flex-basis: 66%;
       }
       & .text-with-image__image-container {
-        flex-basis: max(40%, 600px);
+        flex-basis: 33%;
+      }
+    }
+    &--square {
+      & .text-with-image__text {
+        flex-basis: 50%;
+      }
+      & .text-with-image__image-container {
+        flex-basis: 50%;
       }
     }
 	}
