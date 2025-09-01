@@ -1,3 +1,6 @@
+import { faChevronDown } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { useStrapiData } from "@/hooks/useStrapiData";
 
 import Adjudicator from "@/components/Adjudicator";
@@ -20,24 +23,58 @@ const Piano = function () {
 	const { data: content, loading, error } = useStrapiData<Section>("sections", SECTION_ID);
 
 	const banner = (
-		<section className="block banner">
-			<img className="banner__image" src={bannerImg} alt="" />
+		<section className="block banner banner--tall">
+			<img className="banner__image banner--tall__image" src={bannerImg} alt="" />
 			<div className="banner__content-container fb-col-wrapper">
-				<div className="banner__content">
+				<article className="banner__content">
 					{content && (
 						<>
 							<h1 className="banner__heading">{content.title}</h1>
 							{content.dates &&
 								content.dates.map(date => (
-									<p className="banner__subheading" key={date.id}>
+									<time className="banner__subheading" key={date.id}>
 										{formatDate(date.startDate)}
 										{date.endDate && ` - ${formatDate(date.endDate)}`}
-									</p>
+									</time>
 								))}
 							<p className="banner__subheading">{content.location}</p>
+							{content.leader && (
+								<div className="content banner__section-leader section-leader">
+									<h2 className="section-leader__heading">Section leader</h2>
+									<p className="section-leader__name">
+										{content.leader.name}
+										{content.leader.postNominals && (
+											<span className="section-leader__post-nominals">
+												{content.leader.postNominals}
+											</span>
+										)}
+									</p>
+									<p className="section-leader__contact">Contact: piano@cfmds.org.uk</p>
+								</div>
+							)}
+							{content.adjudicator && (
+								<div className="content banner__adjudicator-summary adjudicator-summary">
+									<h2 className="adjudicator-summary__heading">Adjudicator</h2>
+									<p className="adjudicator-summary__name">
+										{content.adjudicator.name}
+										{content.adjudicator.postNominals && (
+											<span className="adjudicator-summary__post-nominals">
+												{content.adjudicator.postNominals}
+											</span>
+										)}
+									</p>
+									<a href="#adjudicator" className="adjudicator-summary__link">
+										Read biography
+										<FontAwesomeIcon
+											className="adjudicator-summary__link-icon"
+											icon={faChevronDown}
+										/>
+									</a>
+								</div>
+							)}
 						</>
 					)}
-				</div>
+				</article>
 			</div>
 		</section>
 	);

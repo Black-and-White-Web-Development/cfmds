@@ -14,6 +14,11 @@
 		height: max(300px, 50vh);
 	}
 
+  &--tall,
+	&--tall__image {
+		height: max(500px, 60vh);
+	}
+
 	&__image {
 		object-fit: cover;
 		object-position: center;
@@ -42,7 +47,7 @@
 	&__subheading {
 		display: block;
 
-		@include fluid.typography(5, 7);
+		@include fluid.typography(4, 6);
 		font-family: var(--sans-serif);
 		font-weight: var(--fw-light);
 		text-wrap: balance;

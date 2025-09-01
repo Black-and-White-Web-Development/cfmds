@@ -10,7 +10,7 @@ interface AdjudicatorProps {
 
 const Adjudicator = ({ adjudicator }: AdjudicatorProps) => {
 	return (
-		<section className="adjudicator">
+		<section className="adjudicator" id="adjudicator">
 			<h2>About our adjudicator</h2>
 			<article className="adjudicator__container">
 				<header className="adjudicator__header">
