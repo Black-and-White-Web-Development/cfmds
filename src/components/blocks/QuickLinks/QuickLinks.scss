@@ -1,0 +1,14 @@
+@use "@/scss/util" as u;
+
+.quick-links {
+	&__list {
+		list-style: none;
+
+		display: grid;
+		gap: var(--space-4);
+
+		@include u.breakpoint(laptop) {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+}
