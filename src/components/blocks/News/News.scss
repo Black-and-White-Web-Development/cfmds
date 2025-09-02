@@ -1,4 +1,22 @@
+@use "@/scss/util" as u;
+
 .news {
+	&__list {
+		display: grid;
+		gap: var(--space-4);
+    list-style: none;
+    
+		@include u.breakpoint(phone-landscape) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+      &--list {
+        grid-template-columns: auto; 
+      }
+    }
+	}
+}
+
+.news--summary .news {
   &__list {
     list-style: none;
 
