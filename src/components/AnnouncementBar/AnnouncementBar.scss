@@ -1,0 +1,68 @@
+@use "@/scss/util" as u;
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+main {
+	position: relative;
+}
+
+.announcement-bar {
+	position: fixed;
+	inset: auto auto var(--space-4) auto;
+	width: 100%;
+	z-index: 1;
+
+	@include u.breakpoint(tablet) {
+		inset: 96px auto auto auto;
+	}
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		padding: var(--space-2) var(--space-4);
+
+		border-radius: var(--radius-2);
+
+		background-color: hsl(50, 80%, 60%);
+		box-shadow: var(--shadow-3);
+	}
+
+	&,
+	&__body,
+	&__link {
+		font-family: var(--sans-serif);
+		line-height: 1;
+
+		color: hsl(50, 40%, 15%);
+	}
+
+	&__body,
+	&__link,
+	&__close-button {
+		@include fluid.typography(2, 3);
+	}
+
+	&__body {
+		font-weight: var(--fw-medium);
+	}
+
+	&__link {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-1);
+
+		font-weight: var(--fw-regular);
+
+		&:hover {
+			color: inherit;
+			text-decoration: underline;
+		}
+	}
+
+	&__close-button {
+		display: flex;
+		align-items: center;
+		gap: var(--space-1);
+	}
+}
