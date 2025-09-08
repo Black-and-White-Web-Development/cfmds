@@ -20,6 +20,10 @@
 		}
 	}
 
+  &__list {
+    list-style: disc;
+  }
+
 	&__list-item {
 		margin-inline-start: 1rem;
 	}
