@@ -1,3 +1,4 @@
+import type { Block } from "./blocks";
 import type { StrapiDocument } from "@/types/strapi/common.types";
 import type { BlocksContent } from "@strapi/blocks-react-renderer";
 
@@ -21,4 +22,5 @@ export interface Article {
 		publishedAt: string;
 	}[];
 	attachments: StrapiDocument;
+	blocks: Block[];
 }
