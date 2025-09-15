@@ -14,7 +14,10 @@ const Rules = function () {
 
 	if (loading) return <LoadingSpinner message="Loading Festival rules" />;
 	if (error) return <ErrorMessage error={error} message="Error loading rules" />;
-	if (!data) return <NoContent message="Content the relevant Section Leader to receive a copy." />;
+	if (!data)
+		return (
+			<NoContent message="Contact the relevant Section Leader to receive a copy of the rules." />
+		);
 
 	return (
 		<section className="rules block">

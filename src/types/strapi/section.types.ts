@@ -12,6 +12,7 @@ export interface Section {
 	slug: string;
 	location: string;
 	leader: {
+		id: number;
 		name: string;
 		postNominals: string;
 		bio: BlocksContent;
@@ -33,4 +34,5 @@ export interface Section {
 	updatedAt: string;
 	publishedAt: string;
 	blocks: Block[];
+	email: string;
 }
