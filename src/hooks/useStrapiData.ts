@@ -9,7 +9,7 @@ interface UseStrapiDataResult<T> {
 }
 
 export const useStrapiData = <T>(
-	endpoint: "articles" | "pages" | "sections" | "announcement",
+	endpoint: "articles" | "pages" | "sections" | "announcement" | "festival-rules" | "committee",
 	documentId?: string
 ): UseStrapiDataResult<T> => {
 	const [data, setData] = useState<T | null>(null);

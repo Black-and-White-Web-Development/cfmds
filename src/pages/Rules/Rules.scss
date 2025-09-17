@@ -1,0 +1,45 @@
+@use "@/scss/util/mixins/fluid-sizing" as fluid;
+
+.rules {
+	&__list {
+		list-style: none;
+		font-family: sans-serif;
+	}
+}
+
+.ruleset {
+	margin-block-start: var(--space-8);
+
+	&__heading {
+		display: block;
+		@include fluid.typography(6, 7);
+		font-weight: var(--fw-bold);
+	}
+
+	&__number {
+		display: inline-block;
+		margin-inline-end: 1ch;
+		font-size: inherit;
+	}
+
+	&__list {
+		list-style: none;
+		font-family: sans-serif;
+	}
+}
+
+.rule {
+	margin-block-start: var(--space-6);
+
+	&__heading {
+		@include fluid.typography(4, 5);
+		color: var(--text-2);
+	}
+
+	&__number {
+		display: inline-block;
+		margin-inline-end: 1ch;
+		font-size: inherit;
+		color: var(--solid-2);
+	}
+}

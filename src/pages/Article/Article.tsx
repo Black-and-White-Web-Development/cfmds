@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 
 import { useStrapiData } from "@/hooks/useStrapiData";
 
+import BlockRenderer from "@/components/blocks/BlockRenderer";
 import RichTextRenderer from "@/components/blocks/RichTextRenderer";
+import ErrorMessage from "@/components/ErrorMessage";
 import Headline from "@/components/Headline";
 import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
+import NoContent from "@/components/NoContent";
 
 import type { Article as ArticleType } from "@/types/strapi/article.types";
 
@@ -18,13 +21,15 @@ const Article = () => {
 
 	const { data: articles, loading, error } = useStrapiData<ArticleType[]>("articles");
 
-	if (loading) return <div>Loading...</div>;
-	if (error) return <div>Error loading article: {error}</div>;
-	if (!articles) return <div>No articles available</div>;
+	if (loading) return <LoadingSpinner message="Loading articles" />;
+	if (error) return <ErrorMessage message="Error fetching articles" error={error} />;
+	if (!articles) return <NoContent message="No articles available" />;
 
 	const article = articles.find(a => String(a.documentId) === documentId);
 
-	if (!article) return <div>Article not found</div>;
+	console.log(article);
+
+	if (!article) return <NoContent message="Article not found" />;
 
 	const sorted = [...articles].sort(
 		(a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -43,6 +48,7 @@ const Article = () => {
 						<h1 className="article__heading">{article.heading}</h1>
 					</header>
 					<RichTextRenderer content={article.body} />
+					{article.blocks && <BlockRenderer blocks={article.blocks} />}
 				</article>
 				<nav className="article__nav">
 					{nextArticle && (
@@ -72,9 +78,9 @@ const Article = () => {
 						{loading ? (
 							<LoadingSpinner message="Loading articles" />
 						) : error ? (
-							<div className="error">Error fetching articles: {error}</div>
+							<ErrorMessage message="Error fetching articles" error={error} />
 						) : !articles ? (
-							<div className="error">No articles available.</div>
+							<NoContent message="No articles available" />
 						) : (
 							sorted
 								.slice(0, 4)

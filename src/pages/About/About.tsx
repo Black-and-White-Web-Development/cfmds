@@ -1,6 +1,7 @@
 import { useStrapiData } from "@/hooks/useStrapiData";
 
 import BlockRenderer from "@/components/blocks/BlockRenderer";
+import Committee from "@/components/Committee";
 import ErrorMessage from "@/components/ErrorMessage";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import NoContent from "@/components/NoContent";
@@ -24,7 +25,12 @@ const About = function () {
 		return <NoContent message="This page has no content." />;
 	}
 
-	return content.blocks && <BlockRenderer blocks={content.blocks} />;
+	return (
+		<>
+			{content.blocks && <BlockRenderer blocks={content.blocks} />}
+			<Committee />
+		</>
+	);
 };
 
 export default About;
