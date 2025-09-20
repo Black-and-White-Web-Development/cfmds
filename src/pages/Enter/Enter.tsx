@@ -6,18 +6,27 @@ const Enter = function () {
 	return (
 		<section className="enter">
 			<h1 className="enter__heading">Enter the 71st annual festival</h1>
-			<p className="enter__description">
-				Emtries to the Festival are processed by Play&Perform UK. To enter the Festival, you must
-				create and sign in to a Play&Perform account on their website.
-			</p>
+			<div className="enter__description">
+				<p className="enter__paragraph">
+					Entries to the Festival are processed by Play&Perform UK. To enter the Festival, you must
+					create and sign in to a Play&Perform account on their website.
+				</p>
+				<p className="enter__paragraph">
+					Please read our{" "}
+					<a href="/rules" className="enter__link">
+						Festival rules
+					</a>{" "}
+					before entering.
+				</p>
+			</div>
 			<a
-				className="enter__link"
+				className="enter__cta"
 				href="https://playandperform.uk/oe/oe_signin.php?pnp_token=ch&initsw=1901"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
 				Proceed with entry
-				<ArrowRightIcon className="enter__link-icon" />
+				<ArrowRightIcon className="enter__cta-icon" />
 			</a>
 		</section>
 	);
