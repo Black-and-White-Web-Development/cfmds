@@ -19,11 +19,26 @@
 	}
 
 	&__description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+
 		max-width: 60ch;
 		text-wrap: balance;
 	}
 
-	&__link {
+  &__link {
+    color: var(--text-accent-2);
+
+    transition-property: opacity;
+    transition-duration: 400ms;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+	&__cta {
 		display: flex;
 		align-items: center;
 		gap: var(--space-1);
@@ -46,13 +61,13 @@
 			box-shadow: var(--shadow-3);
 			transition-duration: 400ms;
 
-			& .enter__link-icon {
+			& .enter__cta-icon {
 				transform: translateX(4px);
 				transition-duration: 300ms;
 			}
 		}
 	}
-	&__link-icon {
+	&__cta-icon {
 		transition-property: transform;
 		transition-duration: 1200ms;
 	}
