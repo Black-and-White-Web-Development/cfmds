@@ -9,6 +9,8 @@
 		padding: var(--space-2) 0;
     width: 96px;
 
+    fill: var(--text-accent-1);
+
 		@include u.breakpoint(tablet) {
 			padding: var(--space-3);
 		}
