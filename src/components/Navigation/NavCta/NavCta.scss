@@ -27,5 +27,14 @@
 			background-color: var(--interactive-1);
 			transition-duration: 200ms;
 		}
+
+    &--inactive,
+    &--inactive:hover {
+      cursor: not-allowed;
+
+      background-color: var(--interactive-1);
+      color: var(--solid-2);
+      border-color: var(--border-2);
+    }
 	}
 }

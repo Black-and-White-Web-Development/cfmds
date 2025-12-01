@@ -3,7 +3,9 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 import "./Enter.scss";
 
 const Enter = function () {
-	return (
+  const entriesOpen = false;
+
+	return entriesOpen ? (
 		<section className="enter">
 			<h1 className="enter__heading">Enter the 71st annual festival</h1>
 			<div className="enter__description">
@@ -26,6 +28,20 @@ const Enter = function () {
 				rel="noopener noreferrer"
 			>
 				Proceed with entry
+				<ArrowRightIcon className="enter__cta-icon" />
+			</a>
+		</section>
+	) : (
+		<section className="enter">
+			<h1 className="enter__heading">Entries are closed</h1>
+			<div className="enter__description">
+				<p className="enter__paragraph">
+					Entries for the 71st Annual Festival closed on Sunday, 30 November 2025. Entries for the
+					72nd Annual Festival will open on 1 September 2026.
+				</p>
+			</div>
+			<a className="enter__cta" href="/">
+				Back to home page
 				<ArrowRightIcon className="enter__cta-icon" />
 			</a>
 		</section>
