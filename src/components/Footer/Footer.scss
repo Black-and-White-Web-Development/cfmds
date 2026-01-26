@@ -34,4 +34,13 @@
 	&__list-term {
 		font-weight: var(--fw-bold);
 	}
+
+  &__link-outbound {
+    color: white;
+    text-decoration: underline;
+
+    &:hover {
+      color: white;
+    }
+  }
 }
