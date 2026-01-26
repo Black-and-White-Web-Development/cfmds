@@ -21,6 +21,6 @@ export interface Article {
 		updatedAt: string;
 		publishedAt: string;
 	}[];
-	attachments: StrapiDocument;
+	attachments: StrapiDocument[];
 	blocks: Block[];
 }

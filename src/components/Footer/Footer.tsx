@@ -16,12 +16,6 @@ const Footer = function () {
 				<h3 className="footer__heading">Acknowledgements</h3>
 				<dl className="footer__list">
 					<div className="footer__list-item">
-						<dt className="footer__list-term">The Arts Society (Chichester)</dt>
-						<dd className="footer__list-details">
-							The Festival Committee acknowledge the support of the Arts Society (Chichester).
-						</dd>
-					</div>
-					<div className="footer__list-item">
 						<dt className="footer__list-term">
 							Chichester City Council & Bognor Regis Town Council
 						</dt>
@@ -34,14 +28,31 @@ const Footer = function () {
 						<dt className="footer__list-term">Ackerman Music Shop</dt>
 						<dd className="footer__list-details">
 							The Festival Committee gratefully acknowledge the generous support which it receives
-							from the management and staff of Ackerman Music 42 West Street Chichester PO19 1RP.
+							from the management and staff of{" "}
+							<a
+								className="footer__link-outbound"
+								href="https://www.ackermanmusic.co.uk/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Ackerman Music
+							</a>
+							, 42 West Street Chichester PO19 1RP.
 						</dd>
 					</div>
 					<div className="footer__list-item">
 						<dt className="footer__list-term">34SP.com</dt>
 						<dd className="footer__list-details">
-							The Festival Committee gratefully acknowledge the support of 34SP.com for providing a
-							charity web hosting package.
+							The Festival Committee gratefully acknowledge the support of{" "}
+							<a
+								className="footer__link-outbound"
+								href="https://www.34sp.com/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								34SP UK Web Hosting
+							</a>{" "}
+							for providing their Professional web hosting package.
 						</dd>
 					</div>
 				</dl>
