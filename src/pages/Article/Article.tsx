@@ -1,5 +1,6 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { ArrowDownIcon } from "@radix-ui/react-icons";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -40,61 +41,77 @@ const Article = () => {
 	const prevArticle = sorted[currentIndex + 1] || null;
 	const nextArticle = sorted[currentIndex - 1] || null;
 
+  const bytesToMegabytes = (bytes: number) => {
+		const megabytes = Math.floor(bytes / 10) / 100;
+		return `${megabytes} MB`;
+	};
+
 	return (
-		<>
-			<section className="article">
-				<article className="article__content">
-					<header className="article-header">
-						<h1 className="article__heading">{article.heading}</h1>
-					</header>
-					<RichTextRenderer content={article.body} />
-					{article.blocks && <BlockRenderer blocks={article.blocks} />}
-				</article>
-				<nav className="article__nav">
-					{nextArticle && (
-						<Link
-							to={`/news/${nextArticle.documentId}`}
-							className="article__nav-link article__nav-link--next"
+		<section className="article">
+			<article className="article__content">
+				<header className="article__header">
+					<h1 className="article__heading">{article.heading}</h1>
+				</header>
+				{article.attachments &&
+					article.attachments.map(attachment => (
+						<a
+							key={attachment.id}
+							className="article__download"
+							target="_blank"
+							rel="noopener noreferrer"
+							href={attachment.url}
 						>
-							<ArrowLeftIcon className="article__nav-link-icon article__nav-link-icon--next" />
-							<span className="article__nav-link-label">Next article</span>
-							<span className="article__nav-link-title">{nextArticle.heading}</span>
-						</Link>
-					)}
-					{prevArticle && (
-						<Link
-							to={`/news/${prevArticle.documentId}`}
-							className="article__nav-link article__nav-link--prev"
-						>
-							<span className="article__nav-link-label">Previous article</span>
-							<span className="article__nav-link-title">{prevArticle.heading}</span>
-							<ArrowRightIcon className="article__nav-link-icon article__nav-link-icon--previous" />
-						</Link>
-					)}
-				</nav>
-				<aside className="article__related related-articles">
-					<h2 className="related-articles__heading">Catch up with latest Festival news</h2>
-					<ul className="related-articles__list">
-						{loading ? (
-							<LoadingSpinner message="Loading articles" />
-						) : error ? (
-							<ErrorMessage message="Error fetching articles" error={error} />
-						) : !articles ? (
-							<NoContent message="No articles available" />
-						) : (
-							sorted
-								.slice(0, 4)
-								.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-								.map(article => (
-									<li key={article.id} className="related-articles__list-item">
-										<Headline article={article} showPreivew={false} />
-									</li>
-								))
-						)}
-					</ul>
-				</aside>
-			</section>
-		</>
+							<ArrowDownIcon className="article__download-icon" />
+							Download {attachment.name}
+							<span className="article__download-size">({bytesToMegabytes(attachment.size)})</span>
+						</a>
+					))}
+				<RichTextRenderer content={article.body} />
+				{article.blocks && <BlockRenderer blocks={article.blocks} />}
+			</article>
+			<nav className="article__nav">
+				{nextArticle && (
+					<Link
+						to={`/news/${nextArticle.documentId}`}
+						className="article__nav-link article__nav-link--next"
+					>
+						<ArrowLeftIcon className="article__nav-link-icon article__nav-link-icon--next" />
+						<span className="article__nav-link-label">Next article</span>
+						<span className="article__nav-link-title">{nextArticle.heading}</span>
+					</Link>
+				)}
+				{prevArticle && (
+					<Link
+						to={`/news/${prevArticle.documentId}`}
+						className="article__nav-link article__nav-link--prev"
+					>
+						<span className="article__nav-link-label">Previous article</span>
+						<span className="article__nav-link-title">{prevArticle.heading}</span>
+						<ArrowRightIcon className="article__nav-link-icon article__nav-link-icon--previous" />
+					</Link>
+				)}
+			</nav>
+			<aside className="article__related related-articles">
+				<h2 className="related-articles__heading">Catch up with latest Festival news</h2>
+				<ul className="related-articles__list">
+					{loading ?
+						<LoadingSpinner message="Loading articles" />
+					: error ?
+						<ErrorMessage message="Error fetching articles" error={error} />
+					: !articles ?
+						<NoContent message="No articles available" />
+					:	sorted
+							.slice(0, 4)
+							.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+							.map(article => (
+								<li key={article.id} className="related-articles__list-item">
+									<Headline article={article} showPreivew={false} />
+								</li>
+							))
+					}
+				</ul>
+			</aside>
+		</section>
 	);
 };
 
