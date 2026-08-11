@@ -16,8 +16,10 @@
   }
 
   &__name {
-    display: flex;
-    gap: 1ch;
+    display: block;
+  }
+  &__post-nominals {
+    margin-inline-start: 0.75ch;
   }
   
   &__name,
@@ -45,8 +47,11 @@
   }
 
   &__name {
-    display: flex;
-    gap: 1ch;
+    display: block;
+  }
+
+  &__post-nominals {
+    margin-inline-start: 0.75ch;
   }
   
   &__name,

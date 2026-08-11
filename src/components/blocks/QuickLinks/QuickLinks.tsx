@@ -22,6 +22,7 @@ import strings from "@/assets/sections/strings.webp";
 import woodwind from "@/assets/sections/woodwind.webp";
 
 const sectionImages: Record<string, string> = {
+	"adult-choirs": choirs,
 	brass,
 	choirs,
 	"classical-guitar": classicalGuitar,

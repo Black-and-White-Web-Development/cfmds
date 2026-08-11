@@ -39,13 +39,17 @@ const Navigation = () => {
 						<FontAwesomeIcon className="nav__sub-link-icon" icon={faShoe} />
 						Dance
 					</NavSubItem>
+					<NavSubItem to="/sections/adult-choirs">
+						<FontAwesomeIcon className="nav__sub-link-icon" icon={faPeopleLine} />
+						Adult Choirs
+					</NavSubItem>
 					<NavSubItem to="/sections/brass">
 						<FontAwesomeIcon className="nav__sub-link-icon" icon={faTrumpet} />
 						Brass
 					</NavSubItem>
-					<NavSubItem to="/sections/choirs">
+					<NavSubItem to="/sections/junior-choirs">
 						<FontAwesomeIcon className="nav__sub-link-icon" icon={faPeopleLine} />
-						Choirs
+						Junior Choirs
 					</NavSubItem>
 					<NavSubItem to="/sections/classical-guitar">
 						<FontAwesomeIcon className="nav__sub-link-icon" icon={faGuitar} />
