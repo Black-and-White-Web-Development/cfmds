@@ -19,7 +19,7 @@ import { formatDate } from "@/util/formateDate";
 
 const SECTION_ID = "d6r05nfz15xzy2az3n4f07kl";
 
-const Choirs = function () {
+const JuniorChoirs = function () {
 	const { data: content, loading, error } = useStrapiData<Section>("sections", SECTION_ID);
 
 	const banner = (
@@ -116,4 +116,4 @@ const Choirs = function () {
 	);
 };
 
-export default Choirs;
+export default JuniorChoirs;

@@ -1,10 +1,11 @@
 import type { RouteObject } from "react-router-dom";
 
 import Sections from "@/pages/Sections";
+import AdultChoirs from "@/pages/Sections/AdultChoirs";
 import Brass from "@/pages/Sections/Brass";
-import Choirs from "@/pages/Sections/Choirs";
 import ClassicalGuitar from "@/pages/Sections/ClassicalGuitar";
 import Dance from "@/pages/Sections/Dance";
+import JuniorChoirs from "@/pages/Sections/JuniorChoirs";
 import Orchestras from "@/pages/Sections/Orchestras";
 import Organ from "@/pages/Sections/Organ";
 import Piano from "@/pages/Sections/Piano";
@@ -17,10 +18,12 @@ const routes: RouteObject = {
 	path: "sections",
 	children: [
 		{ index: true, element: <Sections /> },
+		{ path: "adult-choirs", element: <AdultChoirs /> },
 		{ path: "brass", element: <Brass /> },
-		{ path: "choirs", element: <Choirs /> },
+		{ path: "choirs", element: <JuniorChoirs /> },
 		{ path: "classical-guitar", element: <ClassicalGuitar /> },
 		{ path: "dance", element: <Dance /> },
+		{ path: "junior-choirs", element: <JuniorChoirs /> },
 		{ path: "orchestras-bands-and-percussion", element: <Orchestras /> },
 		{ path: "organ", element: <Organ /> },
 		{ path: "pianoforte", element: <Piano /> },
