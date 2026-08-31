@@ -1,9 +1,7 @@
-import { faChevronDown } from "@awesome.me/kit-3e90a9788c/icons/classic/light";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { useStrapiData } from "@/hooks/useStrapiData";
 
 import Adjudicator from "@/components/Adjudicator";
+import AdjudicatorSummary from "@/components/AdjudicatorSummary";
 import BlockRenderer from "@/components/blocks/BlockRenderer";
 import Classes from "@/components/Classes";
 import ErrorMessage from "@/components/ErrorMessage";
@@ -52,26 +50,7 @@ const Orchestras = function () {
 									<p className="section-leader__contact">Contact: brass@cfmds.org.uk</p>
 								</div>
 							)}
-							{content.adjudicator && (
-								<div className="content banner__adjudicator-summary adjudicator-summary">
-									<h2 className="adjudicator-summary__heading">Adjudicator</h2>
-									<p className="adjudicator-summary__name">
-										{content.adjudicator.name}
-										{content.adjudicator.postNominals && (
-											<span className="adjudicator-summary__post-nominals">
-												{content.adjudicator.postNominals}
-											</span>
-										)}
-									</p>
-									<a href="#adjudicator" className="adjudicator-summary__link">
-										Read biography
-										<FontAwesomeIcon
-											className="adjudicator-summary__link-icon"
-											icon={faChevronDown}
-										/>
-									</a>
-								</div>
-							)}
+							<AdjudicatorSummary adjudicators={content.adjudicators} />
 						</>
 					)}
 				</article>
@@ -111,7 +90,7 @@ const Orchestras = function () {
 			{banner}
 			{content.blocks && <BlockRenderer blocks={content.blocks} />}
 			{content.classes && <Classes classes={content.classes} />}
-			{content.adjudicator && <Adjudicator adjudicator={content.adjudicator} />}
+			<Adjudicator adjudicators={content.adjudicators} />
 		</>
 	);
 };

@@ -18,7 +18,7 @@ export interface Section {
 		bio: BlocksContent;
 		avatar: StrapiImage;
 	};
-	adjudicator: Adjudicator;
+	adjudicators: Adjudicator[];
 	dates: {
 		id: number;
 		startDate: string;

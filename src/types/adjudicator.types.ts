@@ -6,5 +6,5 @@ export interface Adjudicator {
 	name: string;
 	postNominals: string;
 	bio: BlocksContent;
-	avatar: StrapiImage;
+	avatar: StrapiImage | null;
 }

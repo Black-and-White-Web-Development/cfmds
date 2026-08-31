@@ -26,6 +26,10 @@
     }
 	}
 
+	&__container + &__container {
+		margin-block-start: var(--space-5);
+	}
+
 	&__header {
 		display: flex;
 		flex-direction: column-reverse;
