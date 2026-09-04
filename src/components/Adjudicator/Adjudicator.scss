@@ -2,6 +2,8 @@
 @use "@/scss/util/mixins/fluid-sizing" as fluid;
 
 .adjudicator {
+	--adjudicator-portrait-size: 200px;
+
 	margin-block-end: var(--space-9);
 
 	&__container {  
@@ -38,6 +40,8 @@
     @include u.breakpoint(tablet) {
       position: sticky;
       top: calc(var(--space-9) + var(--space-4));
+      flex: 0 0 var(--adjudicator-portrait-size);
+      width: var(--adjudicator-portrait-size);
     }
 	}
 
@@ -61,9 +65,9 @@
 		border-radius: var(--radius-3);
 		aspect-ratio: 1 / 1;
 		object-fit: cover;
-    
+
     @include u.breakpoint(tablet) {
-      width: 200px;
+      width: 100%;
     }
 	}
 
