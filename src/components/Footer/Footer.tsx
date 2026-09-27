@@ -1,5 +1,7 @@
 import "./Footer.scss";
 
+import childProtectionPolicy from "@/assets/docs/cfmds-child-protection-policy.pdf";
+
 const Footer = function () {
 	return (
 		<footer className="footer fb-col-wrapper">
@@ -11,6 +13,16 @@ const Footer = function () {
 					affiliated to the British and International Federation of Festivals, of which Her Majesty
 					Queen Elizabeth II was patron for over 70 years.
 				</p>
+			</div>
+			<div className="footer__content-wrapper">
+				<h2 className="footer__heading">Policies</h2>
+				<ul className="footer__list">
+					<li className="footer__list-item">
+						<a className="footer__link-outbound" href={childProtectionPolicy}>
+							Child protection policy
+						</a>
+					</li>
+				</ul>
 			</div>
 			<div className="footer__content-wrapper">
 				<h3 className="footer__heading">Acknowledgements</h3>
@@ -53,6 +65,21 @@ const Footer = function () {
 								34SP UK Web Hosting
 							</a>{" "}
 							for providing their Professional web hosting package.
+						</dd>
+					</div>
+					<div className="footer__list-item">
+						<dt className="footer__list-term">Black and White Web Development</dt>
+						<dd className="footer__list-details">
+							The Festival Committee gratefully acknowledge the support of{" "}
+							<a
+								className="footer__link-outbound"
+								href="https://blackandwhite.dev"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Black and White Web Development
+							</a>{" "}
+							for designing, building, and maintaining our website..
 						</dd>
 					</div>
 				</dl>
