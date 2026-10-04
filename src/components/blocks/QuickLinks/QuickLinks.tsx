@@ -24,7 +24,7 @@ import woodwind from "@/assets/sections/woodwind.webp";
 const sectionImages: Record<string, string> = {
 	"adult-choirs": choirs,
 	brass,
-	choirs,
+	"junior-choirs": choirs,
 	"classical-guitar": classicalGuitar,
 	dance,
 	"orchestras-bands-and-percussion": orchestras,
